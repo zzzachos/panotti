@@ -1,0 +1,6 @@
+ANG
+DIS
+FEA
+HAP
+NEU
+SAD

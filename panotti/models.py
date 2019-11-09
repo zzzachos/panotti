@@ -129,7 +129,7 @@ def imageModels(X, nb_classes, weights=None):
 
     top_model = Sequential()        # top_model gets tacked on to pretrained model
     top_model.add(Flatten(input_shape=base_model.output_shape[1:]))
-    top_model.add(Dense(128))            # 128 is 'arbitrary' for now
+    top_model.add(Dense(1024))            # 128 is 'arbitrary' for now #ZZZ switch to 1024
     top_model.add(Dense(nb_classes,name='FinalOutput'))      # Final output layer
 
     #top_model.load_weights('bootlneck_fc_model.h5')

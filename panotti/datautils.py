@@ -133,6 +133,15 @@ def encode_class(class_name, class_names, label_smoothing=0.005):
 def decode_class(vec, class_names):  # generates a number from the one-hot vector
     return int(np.argmax(vec))
 
+def decode_full_class_vector(vec, class_names):#gives a full list of predictions -ZZZ
+    all_predictions = np.argmax(vec, axis = 1)
+    return all_predictions
+
+def boolean_matches(decodedvec, eindex):#gives an array of boolean matches --ZZZ
+    result = decodedvec == eindex
+    return result
+    
+
 
 def shuffle_XY_paths(X,Y,paths):   # generates a randomized order, keeping X&Y(&paths) together
     assert (X.shape[0] == Y.shape[0] )

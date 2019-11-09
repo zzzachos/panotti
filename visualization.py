@@ -18,13 +18,12 @@ import matplotlib
 matplotlib.use('Agg')
 
 from keras.models import  load_model
-from keras.utils import plot_model #ZZZ
 import matplotlib.pyplot as plt
 import librosa
 import os
 from panotti.models import *
 from panotti.datautils import *
-from sklearn.metrics import roc_auc_score, roc_curve, auc, classification_report, confusion_matrix
+from sklearn.metrics import roc_auc_score, roc_curve, auc
 from timeit import default_timer as timer
 
 
@@ -82,12 +81,7 @@ def eval_network(weights_file="weights.hdf5", classpath="Preproc/Test/", batch_s
     fpr = dict()
     tpr = dict()
     roc_auc = dict()
-    truth = decode_full_class_vector(Y_test, class_names)
-    normalized_predictions = y_scores/ y_scores.sum(axis = 1, keepdims = True)
-    predicted = decode_full_class_vector(normalized_predictions, class_names)
-    auc_score = 0 
-    for i in range(n_classes):#this is completely rewritten -ZZZ
-        truthiness = boolean_matches(truth, i)
+    for i in range(n_classes):
         #print("Ytest")
         #print(Y_test)#Y_test[:, i])
         #print("yscores")
@@ -96,11 +90,10 @@ def eval_network(weights_file="weights.hdf5", classpath="Preproc/Test/", batch_s
         #truth = decode_class(Y_test[0],class_names)
         #print(pred)
         #print(truth)
-        fpr[i], tpr[i], _ = roc_curve(truthiness, normalized_predictions[:, i])
+        fpr[i], tpr[i], _ = roc_curve(Y_test[:, i], y_scores[:, i])
         roc_auc[i] = auc(fpr[i], tpr[i])
-        auc_score = auc_score + roc_auc_score(truthiness, normalized_predictions[:, i])
 
-    auc_score = auc_score/len(class_names)
+    auc_score = roc_auc_score(Y_test, y_scores)
     print("Global AUC = ",auc_score)
 
     print("\nDrawing ROC curves...")
@@ -122,13 +115,6 @@ def eval_network(weights_file="weights.hdf5", classpath="Preproc/Test/", batch_s
     plt.savefig(roc_filename)
     plt.close(fig)
     print("")
-    
-    
-    
-    ###confusion matrix ZZZ
-    print(confusion_matrix(truth, predicted ))
-    
-    
 
     # evaluate the model
     print("Running model.evaluate...")
@@ -138,28 +124,6 @@ def eval_network(weights_file="weights.hdf5", classpath="Preproc/Test/", batch_s
     print("All model scores:")
     print(model.metrics_names)
     print(scores)
-    
-    # plot training data
-    #plot_model(model, to_file='model.png')
-    # Plot training & validation accuracy values ZZZ
-#     
-#     plt.plot(history.history['acc'])
-#     plt.plot(history.history['val_acc'])
-#     plt.title('Model accuracy')
-#     plt.ylabel('Accuracy')
-#     plt.xlabel('Epoch')
-#     plt.legend(['Train', 'Test'], loc='upper left')
-#     plt.show()
-#     
-#     # Plot training & validation loss values
-#     plt.plot(history.history['loss'])
-#     plt.plot(history.history['val_loss'])
-#     plt.title('Model loss')
-#     plt.ylabel('Loss')
-#     plt.xlabel('Epoch')
-#     plt.legend(['Train', 'Test'], loc='upper left')
-#     plt.show()
-
 
     print("\nFinished.")
     #plt.show()
