@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1275605.svg)](https://doi.org/10.5281/zenodo.1275605)
+
 
 # A Classification of Vocal Emotions using Convolution Neural Nets.
 
