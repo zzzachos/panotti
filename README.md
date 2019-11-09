@@ -1,5 +1,9 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1275605.svg)](https://doi.org/10.5281/zenodo.1275605)
 
+# A Classification of Vocal Emotions using Convolution Neural Nets.
+
+Details of the baseline CNN set-up is given below. This is for a class project for CS230 in Autumn 2019.
+
 # Panotti: A Convolutional Neural Network classifier for multichannel audio waveforms
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Panoteanen.jpg" alt="Panotti image" height="200">
@@ -110,24 +114,4 @@ After training, more diagnostics -- ROC curves, AUC -- can be obtained by runnin
 
 *(Changing the `batch_size` variable between training and evaluation may not be a good idea.  It will probably screw up the Batch Normalization...but maybe you'll get luck.)*
 
-
-
-## Results
-On the [IDMT Audio Effects Database](https://www.idmt.fraunhofer.de/en/business_units/m2d/smt/audio_effects.html) using the 20,000 monophonic guitar samples across 12 effects classes, this code achieved 99.7% accuracy and an AUC of 0.9999. Specifically, 11 mistakes were made out of about 4000 testing examples; 6 of those were for the 'Phaser' effect, 3 were for EQ, a couple elsewhere, and most of the classes had zero mistakes. (No augmentation was used.)
-
-<a href="url"><img src="http://i.imgur.com/nWHqAWy.png" width="400"></a>
-
-This accuracy is comparable to the [original 2010 study by Stein et al.](http://www.ece.rochester.edu/courses/ECE472/resources/Papers/Stein_2010.pdf), who used a Support Vector Machine.
-
-This was achieved by running for 10 hours on [our workstation with an NVIDIA GTX1080 GPU](https://pcpartpicker.com/b/4xLD4D). 
-
-## Extra Tricks
-- We have multi-GPU training.  The saving & loading means we get warning messages from Keras. Ignore those. It's because if we compile both the parallel model and its
-serial counterpart, it breaks things. So we leave the serial one uncompiled and that's the one we have to save. I regard this problem as a 'bug' in the Keras multi-gpu protocols.
-- Speaking of saving & loading, we encode the names of the output classes in the weights.hdf5 file using a HDF5 attribute 'class_names'.
-
-
-
-<hr>
--- [@drscotthawley](https://drscotthawley.github.io)
 
