@@ -25,7 +25,7 @@ from panotti.mixup_generator import MixupGenerator
 import math
 
 
-def train_network(weights_file="weights.hdf5", classpath="Preproc/Train/",
+def train_network(weights_file_in="weights.hdf5", weights_file_out = "weights.hdf5", classpath="Preprocessed/Train/",
     epochs=50, batch_size=20, val_split=0.2, tile=False, max_per_class=0):
 
     np.random.seed(1)  # fix a number to get reproducibility; comment out for random behavior
@@ -35,15 +35,17 @@ def train_network(weights_file="weights.hdf5", classpath="Preproc/Train/",
         batch_size=batch_size, tile=tile, max_per_class=max_per_class)
 
     # Instantiate the model
-    model, serial_model = setup_model(X_train, class_names, weights_file=weights_file)
+    model, serial_model = setup_model(X_train, class_names, weights_file_in=weights_file_in)
 
     save_best_only = (val_split > 1e-6)
+    print("save best only",save_best_only)
 
     split_index = int(X_train.shape[0]*(1-val_split))
     X_val, Y_val = X_train[split_index:], Y_train[split_index:]
     X_train, Y_train = X_train[:split_index-1], Y_train[:split_index-1]
+    #I don't think they shuffle before setting up cross-validation sets, which could be an issue ... 
 
-    checkpointer = MultiGPUModelCheckpoint(filepath=weights_file, verbose=1, save_best_only=save_best_only,
+    checkpointer = MultiGPUModelCheckpoint(filepath=weights_file_out, verbose=1, save_best_only=save_best_only,
           serial_model=serial_model, period=1, class_names=class_names)
 
     steps_per_epoch = X_train.shape[0] // batch_size
@@ -52,21 +54,25 @@ def train_network(weights_file="weights.hdf5", classpath="Preproc/Train/",
         model.fit_generator(generator=training_generator, steps_per_epoch=steps_per_epoch,
               epochs=epochs, shuffle=True,
               verbose=1, callbacks=[checkpointer], validation_data=(X_val, Y_val))
+    elif save_best_only:
+        model.fit(X_train, Y_train, batch_size=batch_size, epochs=epochs, shuffle=True,
+              verbose=1, callbacks=[checkpointer], validation_split=val_split)
+              validation_data=(X_val, Y_val))
     else:
         model.fit(X_train, Y_train, batch_size=batch_size, epochs=epochs, shuffle=True,
-              verbose=1, callbacks=[checkpointer], #validation_split=val_split)
-              validation_data=(X_val, Y_val))
+              verbose=1, callbacks=[checkpointer], validation_split=val_split)
+              validation_data=(X_train, Y_train))
 
     # overwrite text file class_names.txt  - does not put a newline after last class name
     with open('class_names.txt', 'w') as outfile:
         outfile.write("\n".join(class_names))
 
     # Score the model against Test dataset
-    X_test, Y_test, paths_test, class_names_test  = build_dataset(path=classpath+"../Test/", tile=tile)
+    X_test, Y_test, paths_test, class_names_test  = build_dataset(path=classpath+"../Dev/", tile=tile)
     assert( class_names == class_names_test )
     score = model.evaluate(X_test, Y_test, verbose=0)
-    print('Test loss:', score[0])
-    print('Test accuracy:', score[1])
+    print('Dev set loss:', score[0])
+    print('Dev set accuracy:', score[1])
 
 
 if __name__ == '__main__':
@@ -74,13 +80,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="trains network using training dataset")
     parser.add_argument('-w', '--weights', #nargs=1, type=argparse.FileType('r'),
         help='weights file (in .hdf5)', default="weights.hdf5")
+    parser.add_argument('-n', '--newweights', #nargs=1, type=argparse.FileType('r'),
+        help='weights file (in .hdf5)', default="weights.hdf5")
     parser.add_argument('-c', '--classpath', #type=argparse.string,
-        help='Train dataset directory with list of classes', default="Preproc/Train/")
+        help='Train dataset directory with list of classes', default="Preprocessed/Train/")
     parser.add_argument('--epochs', default=20, type=int, help="Number of iterations to train for")
     parser.add_argument('--batch_size', default=40, type=int, help="Number of clips to send to GPU at once")
     parser.add_argument('--val', default=0.2, type=float, help="Fraction of train to split off for validation")
     parser.add_argument("--tile", help="tile mono spectrograms 3 times for use with imagenet models",action="store_true")
     parser.add_argument('-m', '--maxper', type=int, default=0, help="Max examples per class")
     args = parser.parse_args()
-    train_network(weights_file=args.weights, classpath=args.classpath, epochs=args.epochs, batch_size=args.batch_size,
+    train_network(weights_file_in=args.weights, weights_file_out=args.newweights, classpath=args.classpath, epochs=args.epochs, batch_size=args.batch_size,
         val_split=args.val, tile=args.tile, max_per_class=args.maxper)

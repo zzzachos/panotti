@@ -1,0 +1,177 @@
+Last login: Wed Nov 13 13:23:24 on ttys001
+(base) DNa1c06a0:~ evangelie$ cd ~/Documents/GitHub/panotti/
+(base) DNa1c06a0:panotti evangelie$ source activate tensorflow
+(tensorflow) DNa1c06a0:panotti evangelie$ python train_network.py -n baselineweights.hdf5
+['/Users/evangelie/Documents/GitHub/panotti', '/miniconda3/envs/tensorflow/lib/python37.zip', '/miniconda3/envs/tensorflow/lib/python3.7', '/miniconda3/envs/tensorflow/lib/python3.7/lib-dynload', '/Users/evangelie/.local/lib/python3.7/site-packages', '/miniconda3/envs/tensorflow/lib/python3.7/site-packages']
+3.7.5 (default, Oct 25 2019, 10:52:18) 
+[Clang 4.0.1 (tags/RELEASE_401/final)]
+Using TensorFlow backend.
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2120
+total files =  2126 , going to load total_load =  2120
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 1/345: Preprocessed/Train/ANG/1081_IWW_ANG_XX.wa Loading class 1/6: 'ANG', File 101/345: Preprocessed/Train/ANG/1064_IEO_ANG_MD. Loading class 1/6: 'ANG', File 201/345: Preprocessed/Train/ANG/1007_TAI_ANG_XX. Loading class 1/6: 'ANG', File 301/345: Preprocessed/Train/ANG/1055_DFA_ANG_XX. Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1021_IEO_ANG_LO.wav.npz                  
+ Loading class 2/6: 'DIS', File 1/374: Preprocessed/Train/DIS/1042_DFA_DIS_XX.wa Loading class 2/6: 'DIS', File 101/374: Preprocessed/Train/DIS/1044_ITS_DIS_XX. Loading class 2/6: 'DIS', File 201/374: Preprocessed/Train/DIS/1082_WSI_DIS_XX. Loading class 2/6: 'DIS', File 301/374: Preprocessed/Train/DIS/1076_TSI_DIS_XX. Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1014_IWW_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 1/343: Preprocessed/Train/FEA/1046_ITH_FEA_XX.wa Loading class 3/6: 'FEA', File 101/343: Preprocessed/Train/FEA/1046_TSI_FEA_XX. Loading class 3/6: 'FEA', File 201/343: Preprocessed/Train/FEA/1026_IWL_FEA_XX. Loading class 3/6: 'FEA', File 301/343: Preprocessed/Train/FEA/1016_IEO_FEA_LO. Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1025_TSI_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 1/363: Preprocessed/Train/HAP/1086_IOM_HAP_XX.wa Loading class 4/6: 'HAP', File 101/363: Preprocessed/Train/HAP/1001_TAI_HAP_XX. Loading class 4/6: 'HAP', File 201/363: Preprocessed/Train/HAP/1001_WSI_HAP_XX. Loading class 4/6: 'HAP', File 301/363: Preprocessed/Train/HAP/1012_TAI_HAP_XX. Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1002_WSI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 1/328: Preprocessed/Train/NEU/1013_ITH_NEU_XX.wa Loading class 5/6: 'NEU', File 101/328: Preprocessed/Train/NEU/1029_MTI_NEU_XX. Loading class 5/6: 'NEU', File 201/328: Preprocessed/Train/NEU/1017_TAI_NEU_XX. Loading class 5/6: 'NEU', File 301/328: Preprocessed/Train/NEU/1050_DFA_NEU_XX. Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1022_IWW_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 1/373: Preprocessed/Train/SAD/1022_IOM_SAD_XX.wa Loading class 6/6: 'SAD', File 101/373: Preprocessed/Train/SAD/1052_IEO_SAD_MD. Loading class 6/6: 'SAD', File 201/373: Preprocessed/Train/SAD/1058_IEO_SAD_LO. Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1086_MTI_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2120, 96, 420, 1) , channels =  1
+2019-11-13 16:14:58.375717: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2019-11-13 16:14:58.379454: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+WARNING:tensorflow:Large dropout rate: 0.6 (>0.5). In TensorFlow 2.x, dropout() uses dropout rate instead of keep_prob. Please ensure that this is intended.
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_1 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_2 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_3 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_4 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_5 (Activation)    (None, 128)               0         
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 1695 samples, validate on 424 samples
+Epoch 1/20
+1695/1695 [==============================] - 165s 97ms/step - loss: 2.9944 - accuracy: 0.2242 - val_loss: 1.9484 - val_accuracy: 0.1863
+
+Epoch 00001: val_loss improved from inf to 1.94840, saving model to baselineweights.hdf5
+Epoch 2/20
+1695/1695 [==============================] - 150s 88ms/step - loss: 2.0382 - accuracy: 0.2914 - val_loss: 2.0307 - val_accuracy: 0.2358
+
+Epoch 00002: val_loss did not improve
+Epoch 3/20
+1695/1695 [==============================] - 148s 87ms/step - loss: 1.9705 - accuracy: 0.3103 - val_loss: 1.9610 - val_accuracy: 0.2854
+
+Epoch 00003: val_loss did not improve
+Epoch 4/20
+1695/1695 [==============================] - 148s 88ms/step - loss: 1.8905 - accuracy: 0.3127 - val_loss: 1.6768 - val_accuracy: 0.2830
+
+Epoch 00004: val_loss improved from 1.94840 to 1.67676, saving model to baselineweights.hdf5
+Epoch 5/20
+1695/1695 [==============================] - 148s 87ms/step - loss: 1.7987 - accuracy: 0.3310 - val_loss: 2.1151 - val_accuracy: 0.2901
+
+Epoch 00005: val_loss did not improve
+Epoch 6/20
+1695/1695 [==============================] - 1414s 834ms/step - loss: 1.7734 - accuracy: 0.3263 - val_loss: 1.6199 - val_accuracy: 0.3632
+
+Epoch 00006: val_loss improved from 1.67676 to 1.61988, saving model to baselineweights.hdf5
+Epoch 7/20
+1695/1695 [==============================] - 162s 96ms/step - loss: 1.7252 - accuracy: 0.3481 - val_loss: 1.5297 - val_accuracy: 0.3278
+
+Epoch 00007: val_loss improved from 1.61988 to 1.52970, saving model to baselineweights.hdf5
+Epoch 8/20
+1695/1695 [==============================] - 167s 99ms/step - loss: 1.6670 - accuracy: 0.3652 - val_loss: 1.5175 - val_accuracy: 0.3892
+
+Epoch 00008: val_loss improved from 1.52970 to 1.51748, saving model to baselineweights.hdf5
+Epoch 9/20
+1695/1695 [==============================] - 161s 95ms/step - loss: 1.6580 - accuracy: 0.3729 - val_loss: 1.4515 - val_accuracy: 0.4175
+
+Epoch 00009: val_loss improved from 1.51748 to 1.45151, saving model to baselineweights.hdf5
+Epoch 10/20
+1695/1695 [==============================] - 178s 105ms/step - loss: 1.6346 - accuracy: 0.3599 - val_loss: 1.5177 - val_accuracy: 0.4151
+
+Epoch 00010: val_loss did not improve
+Epoch 11/20
+1695/1695 [==============================] - 163s 96ms/step - loss: 1.6137 - accuracy: 0.3711 - val_loss: 1.4722 - val_accuracy: 0.4127
+
+Epoch 00011: val_loss did not improve
+Epoch 12/20
+1695/1695 [==============================] - 156s 92ms/step - loss: 1.5715 - accuracy: 0.3740 - val_loss: 1.6213 - val_accuracy: 0.3113
+
+Epoch 00012: val_loss did not improve
+Epoch 13/20
+1695/1695 [==============================] - 159s 94ms/step - loss: 1.5463 - accuracy: 0.3811 - val_loss: 1.5697 - val_accuracy: 0.3184
+
+Epoch 00013: val_loss did not improve
+Epoch 14/20
+1695/1695 [==============================] - 162s 95ms/step - loss: 1.5373 - accuracy: 0.4000 - val_loss: 1.5782 - val_accuracy: 0.3420
+
+Epoch 00014: val_loss did not improve
+Epoch 15/20
+1695/1695 [==============================] - 149s 88ms/step - loss: 1.4925 - accuracy: 0.4083 - val_loss: 1.4505 - val_accuracy: 0.4458
+
+Epoch 00015: val_loss improved from 1.45151 to 1.45054, saving model to baselineweights.hdf5
+Epoch 16/20
+1695/1695 [==============================] - 161s 95ms/step - loss: 1.4843 - accuracy: 0.4059 - val_loss: 1.6503 - val_accuracy: 0.3821
+
+Epoch 00016: val_loss did not improve
+Epoch 17/20
+1695/1695 [==============================] - 165s 97ms/step - loss: 1.4654 - accuracy: 0.4195 - val_loss: 1.4296 - val_accuracy: 0.4717
+
+Epoch 00017: val_loss improved from 1.45054 to 1.42958, saving model to baselineweights.hdf5
+Epoch 18/20
+1695/1695 [==============================] - 158s 93ms/step - loss: 1.4393 - accuracy: 0.4236 - val_loss: 1.5838 - val_accuracy: 0.3467
+
+Epoch 00018: val_loss did not improve
+Epoch 19/20
+1695/1695 [==============================] - 164s 96ms/step - loss: 1.4201 - accuracy: 0.4236 - val_loss: 1.4856 - val_accuracy: 0.3868
+
+Epoch 00019: val_loss did not improve
+Epoch 20/20
+1695/1695 [==============================] - 159s 94ms/step - loss: 1.4265 - accuracy: 0.4383 - val_loss: 1.4112 - val_accuracy: 0.4670
+
+Epoch 00020: val_loss improved from 1.42958 to 1.41121, saving model to baselineweights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 1/44: Preprocessed/Train/../Dev/ANG/1039_TIE_ANG_XX.wav.npz       Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1069_IOM_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 1/42: Preprocessed/Train/../Dev/DIS/1086_TIE_DIS_XX.wav.npz       Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1037_ITS_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 1/62: Preprocessed/Train/../Dev/FEA/1036_WSI_FEA_XX.wav.npz       Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1059_ITS_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 1/47: Preprocessed/Train/../Dev/HAP/1032_DFA_HAP_XX.wav.npz       Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1045_TSI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 1/31: Preprocessed/Train/../Dev/NEU/1075_DFA_NEU_XX.wav.npz       Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1024_WSI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 1/40: Preprocessed/Train/../Dev/SAD/1071_IWL_SAD_XX.wav.npz       Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1053_ITS_SAD_XX.wav.npz                  
+Dev set loss: 1.4413649686297079
+Dev set accuracy: 0.4548872113227844
+(tensorflow) DNa1c06a0:panotti evangelie$ 

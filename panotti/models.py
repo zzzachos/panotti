@@ -28,7 +28,7 @@ import h5py
 
 # This is a VGG-style network that I made by 'dumbing down' @keunwoochoi's compact_cnn code
 # I have not attempted much optimization, however it *is* fairly understandable
-def MyCNN_Keras2(X_shape, nb_classes, nb_layers=4):
+def MyCNN_Keras2(X_shape, nb_classes, nb_layers=4, convdropout=0.5, densdropout=0.6):
     # Inputs:
     #    X_shape = [ # spectrograms per batch, # audio channels, # spectrogram freq bins, # spectrogram time bins ]
     #    nb_classes = number of output n_classes
@@ -39,8 +39,8 @@ def MyCNN_Keras2(X_shape, nb_classes, nb_layers=4):
     nb_filters = 32  # number of convolutional filters = "feature maps"
     kernel_size = (3, 3)  # convolution kernel size
     pool_size = (2, 2)  # size of pooling area for max pooling
-    cl_dropout = 0.5    # conv. layer dropout
-    dl_dropout = 0.6    # dense layer dropout
+    cl_dropout = convdropout    # conv. layer dropout
+    dl_dropout = densdropout    # dense layer dropout
 
     print(" MyCNN_Keras2: X_shape = ",X_shape,", channels = ",X_shape[3])
     input_shape = (X_shape[1], X_shape[2], X_shape[3])
@@ -202,7 +202,7 @@ def freeze_layers(model, train_last=3):
 
 # This is the main routine for setting up a model
 def setup_model(X, class_names, nb_layers=4, try_checkpoint=True,
-    weights_file='weights.hdf5', quiet=False, missing_weights_fatal=False, multi_tag=False):
+    weights_file_in='weights.hdf5', convdropout=0.5, densdropout=0.6, quiet=False, missing_weights_fatal=False, multi_tag=False,optimizer="adadelta", lr =1):
     ''' In the following, the reason we hang on to & return serial_model,
          is because Keras can't save parallel models, but according to fchollet
          the serial & parallel versions will always share the same weights
@@ -210,7 +210,7 @@ def setup_model(X, class_names, nb_layers=4, try_checkpoint=True,
     '''
 
     # Here's where one might 'swap out' different neural network 'model' choices
-    serial_model = MyCNN_Keras2(X.shape, nb_classes=len(class_names), nb_layers=nb_layers)
+    serial_model = MyCNN_Keras2(X.shape, nb_classes=len(class_names), nb_layers=nb_layers,convdropout = convdropout, densdropout=densdropout)
     #serial_model = old_model(X.shape, nb_classes=len(class_names), nb_layers=nb_layers)
     #serial_model = imageModels(X, nb_classes=len(class_names))
 
@@ -220,9 +220,9 @@ def setup_model(X, class_names, nb_layers=4, try_checkpoint=True,
     # Initialize weights using checkpoint if it exists.
     if (try_checkpoint):
         print("Looking for previous weights...")
-        if ( isfile(weights_file) ):
-            print ('Weights file detected. Loading from ',weights_file)
-            loaded_model = load_model(weights_file)   # strip any previous parallel part, to be added back in later
+        if ( isfile(weights_file_in) ):
+            print ('Weights file detected. Loading from ',weights_file_in)
+            loaded_model = load_model(weights_file_in)   # strip any previous parallel part, to be added back in later
             serial_model.set_weights( loaded_model.get_weights() )   # assign weights based on checkpoint
         else:
             if (missing_weights_fatal):
@@ -230,9 +230,11 @@ def setup_model(X, class_names, nb_layers=4, try_checkpoint=True,
                 assert(not missing_weights_fatal)
             else:
                 print('No weights file detected, so starting from scratch.')
-
-
-    opt = 'adadelta' # Adam(lr = 0.00001)  # So far, adadelta seems to work the best of things I've tried
+    
+    if optimizer == "adadelta":
+        opt = 'adadelta'
+    else:
+        opt = eval(optimizer)(learning_rate = lr)#'adadelta' # Adam(lr = 0.00001)  # So far, adadelta seems to work the best of things I've tried
     #opt = 'adam'
     metrics = ['accuracy']
 

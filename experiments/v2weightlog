@@ -1,0 +1,1728 @@
+Last login: Sun Nov 24 15:26:09 on ttys000
+(base) Evangelie:~ evangelie$ cd ~/Documents/GitHub/panotti/
+(base) Evangelie:panotti evangelie$ source activate tensorflow
+(tensorflow) Evangelie:panotti evangelie$ python experiments.py
+['/Users/evangelie/Documents/GitHub/panotti', '/miniconda3/envs/tensorflow/lib/python37.zip', '/miniconda3/envs/tensorflow/lib/python3.7', '/miniconda3/envs/tensorflow/lib/python3.7/lib-dynload', '/Users/evangelie/.local/lib/python3.7/site-packages', '/miniconda3/envs/tensorflow/lib/python3.7/site-packages']
+3.7.5 (default, Oct 25 2019, 10:52:18) 
+[Clang 4.0.1 (tags/RELEASE_401/final)]
+Using TensorFlow backend.
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 1/345: Preprocessed/Train/ANG/1006_IWL_ANG_XX.wa Loading class 1/6: 'ANG', File 101/345: Preprocessed/Train/ANG/1028_IEO_ANG_LO. Loading class 1/6: 'ANG', File 201/345: Preprocessed/Train/ANG/1069_ITS_ANG_XX. Loading class 1/6: 'ANG', File 301/345: Preprocessed/Train/ANG/1010_TSI_ANG_XX. Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1056_MTI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 1/374: Preprocessed/Train/DIS/1031_ITH_DIS_XX.wa Loading class 2/6: 'DIS', File 101/374: Preprocessed/Train/DIS/1042_MTI_DIS_XX. Loading class 2/6: 'DIS', File 201/374: Preprocessed/Train/DIS/1046_ITH_DIS_XX. Loading class 2/6: 'DIS', File 301/374: Preprocessed/Train/DIS/1040_IWW_DIS_XX. Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1020_WSI_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 1/343: Preprocessed/Train/FEA/1044_TIE_FEA_XX.wa Loading class 3/6: 'FEA', File 101/343: Preprocessed/Train/FEA/1006_TIE_FEA_XX. Loading class 3/6: 'FEA', File 201/343: Preprocessed/Train/FEA/1053_TIE_FEA_XX. Loading class 3/6: 'FEA', File 301/343: Preprocessed/Train/FEA/1018_ITH_FEA_XX. Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1037_IEO_FEA_HI.wav.npz                  
+ Loading class 4/6: 'HAP', File 1/363: Preprocessed/Train/HAP/1018_TAI_HAP_XX.wa Loading class 4/6: 'HAP', File 101/363: Preprocessed/Train/HAP/1089_DFA_HAP_XX. Loading class 4/6: 'HAP', File 201/363: Preprocessed/Train/HAP/1015_TIE_HAP_XX. Loading class 4/6: 'HAP', File 301/363: Preprocessed/Train/HAP/1022_IOM_HAP_XX. Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1031_IEO_HAP_LO.wav.npz                  
+ Loading class 5/6: 'NEU', File 1/328: Preprocessed/Train/NEU/1019_IWW_NEU_XX.wa Loading class 5/6: 'NEU', File 101/328: Preprocessed/Train/NEU/1021_TIE_NEU_XX. Loading class 5/6: 'NEU', File 201/328: Preprocessed/Train/NEU/1032_IOM_NEU_XX. Loading class 5/6: 'NEU', File 301/328: Preprocessed/Train/NEU/1062_IOM_NEU_XX. Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1084_IEO_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 1/373: Preprocessed/Train/SAD/1072_IEO_SAD_MD.wa Loading class 6/6: 'SAD', File 101/373: Preprocessed/Train/SAD/1019_ITS_SAD_XX. Loading class 6/6: 'SAD', File 201/373: Preprocessed/Train/SAD/1034_DFA_SAD_XX. Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1090_TAI_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+2019-11-25 13:41:49.313995: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2019-11-25 13:41:49.315239: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_1 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_2 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_3 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_4 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_5 (Activation)    (None, 128)               0         
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/25
+2080/2080 [==============================] - 251s 121ms/step - loss: 2.5536 - accuracy: 0.3115 - val_loss: 2.7370 - val_accuracy: 0.2082
+
+Epoch 00001: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 2/25
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.5952 - accuracy: 0.3639 - val_loss: 1.6709 - val_accuracy: 0.3279
+
+Epoch 00002: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 3/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5954 - accuracy: 0.3659 - val_loss: 1.5878 - val_accuracy: 0.3870
+
+Epoch 00003: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 4/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5472 - accuracy: 0.3779 - val_loss: 1.7112 - val_accuracy: 0.3995
+
+Epoch 00004: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 5/25
+2080/2080 [==============================] - 242s 117ms/step - loss: 1.4934 - accuracy: 0.4048 - val_loss: 1.9773 - val_accuracy: 0.2851
+
+Epoch 00005: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 6/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4895 - accuracy: 0.4144 - val_loss: 1.2790 - val_accuracy: 0.5135
+
+Epoch 00006: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 7/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4453 - accuracy: 0.4317 - val_loss: 1.3567 - val_accuracy: 0.4654
+
+Epoch 00007: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 8/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.3854 - accuracy: 0.4399 - val_loss: 1.4894 - val_accuracy: 0.4043
+
+Epoch 00008: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 9/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.3564 - accuracy: 0.4529 - val_loss: 1.1463 - val_accuracy: 0.5793
+
+Epoch 00009: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 10/25
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.3963 - accuracy: 0.4495 - val_loss: 1.3100 - val_accuracy: 0.4846
+
+Epoch 00010: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 11/25
+2080/2080 [==============================] - 240s 115ms/step - loss: 1.2934 - accuracy: 0.4913 - val_loss: 1.1678 - val_accuracy: 0.5466
+
+Epoch 00011: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 12/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.3110 - accuracy: 0.4837 - val_loss: 1.1008 - val_accuracy: 0.5880
+
+Epoch 00012: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 13/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.2698 - accuracy: 0.5038 - val_loss: 1.0564 - val_accuracy: 0.6091
+
+Epoch 00013: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 14/25
+2080/2080 [==============================] - 240s 115ms/step - loss: 1.2214 - accuracy: 0.5154 - val_loss: 0.9881 - val_accuracy: 0.6245
+
+Epoch 00014: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 15/25
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.2107 - accuracy: 0.5341 - val_loss: 0.9859 - val_accuracy: 0.6370
+
+Epoch 00015: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 16/25
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.1997 - accuracy: 0.5154 - val_loss: 1.1089 - val_accuracy: 0.5654
+
+Epoch 00016: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 17/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.1870 - accuracy: 0.5264 - val_loss: 1.0048 - val_accuracy: 0.5933
+
+Epoch 00017: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 18/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.1335 - accuracy: 0.5688 - val_loss: 0.9020 - val_accuracy: 0.6644
+
+Epoch 00018: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 19/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0838 - accuracy: 0.5813 - val_loss: 1.1008 - val_accuracy: 0.6115
+
+Epoch 00019: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 20/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.0403 - accuracy: 0.6067 - val_loss: 0.7719 - val_accuracy: 0.7260
+
+Epoch 00020: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 21/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0269 - accuracy: 0.6149 - val_loss: 0.7545 - val_accuracy: 0.7188
+
+Epoch 00021: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 22/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0080 - accuracy: 0.6024 - val_loss: 0.7269 - val_accuracy: 0.7356
+
+Epoch 00022: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 23/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9664 - accuracy: 0.6332 - val_loss: 0.7021 - val_accuracy: 0.7457
+
+Epoch 00023: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 24/25
+2080/2080 [==============================] - 240s 115ms/step - loss: 0.9256 - accuracy: 0.6327 - val_loss: 0.6611 - val_accuracy: 0.7692
+
+Epoch 00024: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+Epoch 25/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9062 - accuracy: 0.6553 - val_loss: 0.5685 - val_accuracy: 0.8029
+
+Epoch 00025: saving model to v2_convdropout0.3densedropout0.2weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1023_IOM_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1088_IWL_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1038_ITH_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1036_TSI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1086_TSI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1089_ITH_SAD_XX.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.444428004716572
+Dev set accuracy: 0.5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1046_IWL_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1080_TAI_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1084_IEO_FEA_LO.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1042_IWL_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1015_TAI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1022_DFA_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_2"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_5 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_6 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_6 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_7 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_5 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_7 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_8 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_6 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_8 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_9 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_7 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_10 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_8 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/25
+2080/2080 [==============================] - 241s 116ms/step - loss: 2.7288 - accuracy: 0.2798 - val_loss: 2.2110 - val_accuracy: 0.2240
+
+Epoch 00001: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 2/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.6666 - accuracy: 0.3404 - val_loss: 2.1826 - val_accuracy: 0.2740
+
+Epoch 00002: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 3/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.6174 - accuracy: 0.3457 - val_loss: 1.9077 - val_accuracy: 0.3313
+
+Epoch 00003: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 4/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.6871 - accuracy: 0.3490 - val_loss: 1.4468 - val_accuracy: 0.4091
+
+Epoch 00004: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 5/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4943 - accuracy: 0.3899 - val_loss: 1.4643 - val_accuracy: 0.4351
+
+Epoch 00005: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 6/25
+2080/2080 [==============================] - 242s 117ms/step - loss: 1.4971 - accuracy: 0.4091 - val_loss: 1.4434 - val_accuracy: 0.4125
+
+Epoch 00006: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 7/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4926 - accuracy: 0.4154 - val_loss: 1.4996 - val_accuracy: 0.4481
+
+Epoch 00007: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 8/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.4239 - accuracy: 0.4337 - val_loss: 1.2762 - val_accuracy: 0.5019
+
+Epoch 00008: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 9/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.4215 - accuracy: 0.4288 - val_loss: 1.2734 - val_accuracy: 0.4832
+
+Epoch 00009: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 10/25
+2080/2080 [==============================] - 240s 115ms/step - loss: 1.4171 - accuracy: 0.4471 - val_loss: 1.2284 - val_accuracy: 0.4889
+
+Epoch 00010: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 11/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3925 - accuracy: 0.4471 - val_loss: 1.2407 - val_accuracy: 0.4688
+
+Epoch 00011: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 12/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3425 - accuracy: 0.4716 - val_loss: 1.1406 - val_accuracy: 0.5659
+
+Epoch 00012: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 13/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.2911 - accuracy: 0.5019 - val_loss: 1.0691 - val_accuracy: 0.5918
+
+Epoch 00013: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 14/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.2946 - accuracy: 0.4957 - val_loss: 1.0640 - val_accuracy: 0.5928
+
+Epoch 00014: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 15/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.2613 - accuracy: 0.5144 - val_loss: 1.0346 - val_accuracy: 0.6149
+
+Epoch 00015: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 16/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.2350 - accuracy: 0.5135 - val_loss: 1.0694 - val_accuracy: 0.5654
+
+Epoch 00016: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 17/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.2242 - accuracy: 0.5308 - val_loss: 0.9898 - val_accuracy: 0.6404
+
+Epoch 00017: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 18/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.1964 - accuracy: 0.5433 - val_loss: 0.9587 - val_accuracy: 0.6553
+
+Epoch 00018: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 19/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.1703 - accuracy: 0.5361 - val_loss: 0.8959 - val_accuracy: 0.6601
+
+Epoch 00019: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 20/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.1350 - accuracy: 0.5582 - val_loss: 0.8573 - val_accuracy: 0.6957
+
+Epoch 00020: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 21/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.1065 - accuracy: 0.5683 - val_loss: 0.8270 - val_accuracy: 0.6981
+
+Epoch 00021: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 22/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.0710 - accuracy: 0.5894 - val_loss: 0.8741 - val_accuracy: 0.6779
+
+Epoch 00022: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 23/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0961 - accuracy: 0.5813 - val_loss: 0.7900 - val_accuracy: 0.7163
+
+Epoch 00023: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 24/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0392 - accuracy: 0.5990 - val_loss: 0.8221 - val_accuracy: 0.6990
+
+Epoch 00024: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+Epoch 25/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0177 - accuracy: 0.6034 - val_loss: 0.7483 - val_accuracy: 0.7231
+
+Epoch 00025: saving model to v2_convdropout0.3densedropout0.4weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1069_IOM_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1062_IEO_DIS_HI.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1036_TAI_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1070_DFA_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1075_MTI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1022_IEO_SAD_MD.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.3614310635659927
+Dev set accuracy: 0.4624060094356537
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1052_IEO_ANG_LO.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1008_IEO_DIS_HI.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1016_IEO_FEA_LO.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1018_IEO_HAP_MD.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1076_IWL_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1009_DFA_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_3"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_9 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_11 (Activation)   (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_7 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_10 (MaxPooling (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_12 (Activation)   (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_9 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_8 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_11 (MaxPooling (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_13 (Activation)   (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_10 (Dropout)         (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_9 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_12 (MaxPooling (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_14 (Activation)   (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_11 (Dropout)         (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_3 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_15 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_12 (Dropout)         (None, 128)               0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/25
+2080/2080 [==============================] - 241s 116ms/step - loss: 2.8621 - accuracy: 0.2635 - val_loss: 2.3896 - val_accuracy: 0.1976
+
+Epoch 00001: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 2/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.6833 - accuracy: 0.3221 - val_loss: 2.7446 - val_accuracy: 0.2212
+
+Epoch 00002: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 3/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.6435 - accuracy: 0.3370 - val_loss: 1.8463 - val_accuracy: 0.3231
+
+Epoch 00003: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 4/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.6321 - accuracy: 0.3438 - val_loss: 1.7476 - val_accuracy: 0.3279
+
+Epoch 00004: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 5/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5712 - accuracy: 0.3808 - val_loss: 2.0204 - val_accuracy: 0.2784
+
+Epoch 00005: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 6/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5692 - accuracy: 0.3635 - val_loss: 1.5485 - val_accuracy: 0.3837
+
+Epoch 00006: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 7/25
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.5218 - accuracy: 0.3822 - val_loss: 1.5700 - val_accuracy: 0.3736
+
+Epoch 00007: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 8/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5100 - accuracy: 0.3962 - val_loss: 1.3716 - val_accuracy: 0.4639
+
+Epoch 00008: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 9/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5304 - accuracy: 0.3957 - val_loss: 1.5031 - val_accuracy: 0.4183
+
+Epoch 00009: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 10/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5040 - accuracy: 0.4029 - val_loss: 1.3513 - val_accuracy: 0.4726
+
+Epoch 00010: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 11/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.4683 - accuracy: 0.3990 - val_loss: 1.4674 - val_accuracy: 0.4087
+
+Epoch 00011: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 12/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.4673 - accuracy: 0.3909 - val_loss: 1.3713 - val_accuracy: 0.4500
+
+Epoch 00012: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 13/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4259 - accuracy: 0.4231 - val_loss: 1.4645 - val_accuracy: 0.4077
+
+Epoch 00013: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 14/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4102 - accuracy: 0.4173 - val_loss: 1.3579 - val_accuracy: 0.4673
+
+Epoch 00014: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 15/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.4245 - accuracy: 0.4163 - val_loss: 1.2155 - val_accuracy: 0.5337
+
+Epoch 00015: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 16/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4096 - accuracy: 0.4337 - val_loss: 1.2674 - val_accuracy: 0.5115
+
+Epoch 00016: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 17/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3797 - accuracy: 0.4418 - val_loss: 1.3085 - val_accuracy: 0.4875
+
+Epoch 00017: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 18/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3848 - accuracy: 0.4452 - val_loss: 1.2380 - val_accuracy: 0.5202
+
+Epoch 00018: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 19/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3618 - accuracy: 0.4442 - val_loss: 1.2291 - val_accuracy: 0.5389
+
+Epoch 00019: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 20/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.3396 - accuracy: 0.4639 - val_loss: 1.2225 - val_accuracy: 0.5139
+
+Epoch 00020: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 21/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3370 - accuracy: 0.4793 - val_loss: 1.2260 - val_accuracy: 0.5202
+
+Epoch 00021: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 22/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.3288 - accuracy: 0.4649 - val_loss: 1.3122 - val_accuracy: 0.4894
+
+Epoch 00022: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 23/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3166 - accuracy: 0.4808 - val_loss: 1.3590 - val_accuracy: 0.4740
+
+Epoch 00023: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 24/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.2605 - accuracy: 0.5019 - val_loss: 1.1831 - val_accuracy: 0.5567
+
+Epoch 00024: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+Epoch 25/25
+2080/2080 [==============================] - 245s 118ms/step - loss: 1.2735 - accuracy: 0.4986 - val_loss: 1.1731 - val_accuracy: 0.5317
+
+Epoch 00025: saving model to v2_convdropout0.5densedropout0.2weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1060_IEO_ANG_MD.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1088_IWL_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1088_IWW_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1034_TSI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1088_IOM_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1078_DFA_SAD_XX.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.4911197325340788
+Dev set accuracy: 0.3947368562221527
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1033_IWL_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1020_ITS_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1029_ITH_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1046_IWW_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1039_ITS_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1064_IEO_SAD_HI.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_4"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_13 (MaxPooling (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_16 (Activation)   (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_10 (Conv2D)           (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_14 (MaxPooling (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_17 (Activation)   (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_13 (Dropout)         (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_11 (Conv2D)           (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_15 (MaxPooling (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_18 (Activation)   (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_14 (Dropout)         (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_12 (Conv2D)           (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_16 (MaxPooling (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_19 (Activation)   (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_15 (Dropout)         (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_4 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_7 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_20 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_16 (Dropout)         (None, 128)               0         
+_________________________________________________________________
+dense_8 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/25
+2080/2080 [==============================] - 242s 116ms/step - loss: 2.9222 - accuracy: 0.2596 - val_loss: 3.9370 - val_accuracy: 0.1875
+
+Epoch 00001: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 2/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.8549 - accuracy: 0.2966 - val_loss: 2.4394 - val_accuracy: 0.2226
+
+Epoch 00002: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 3/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.7740 - accuracy: 0.3293 - val_loss: 1.8193 - val_accuracy: 0.3115
+
+Epoch 00003: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 4/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.7601 - accuracy: 0.3173 - val_loss: 1.6500 - val_accuracy: 0.3250
+
+Epoch 00004: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 5/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.6552 - accuracy: 0.3462 - val_loss: 1.8653 - val_accuracy: 0.2933
+
+Epoch 00005: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 6/25
+2080/2080 [==============================] - 240s 116ms/step - loss: 1.6501 - accuracy: 0.3707 - val_loss: 1.5282 - val_accuracy: 0.4096
+
+Epoch 00006: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 7/25
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.6071 - accuracy: 0.3851 - val_loss: 1.6445 - val_accuracy: 0.3351
+
+Epoch 00007: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 8/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5926 - accuracy: 0.3880 - val_loss: 1.7301 - val_accuracy: 0.3351
+
+Epoch 00008: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 9/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5583 - accuracy: 0.3740 - val_loss: 1.5013 - val_accuracy: 0.3726
+
+Epoch 00009: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 10/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5164 - accuracy: 0.4058 - val_loss: 1.4503 - val_accuracy: 0.3683
+
+Epoch 00010: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 11/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5498 - accuracy: 0.4058 - val_loss: 1.3346 - val_accuracy: 0.5043
+
+Epoch 00011: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 12/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5039 - accuracy: 0.4043 - val_loss: 1.4123 - val_accuracy: 0.4380
+
+Epoch 00012: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 13/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5026 - accuracy: 0.4154 - val_loss: 1.3182 - val_accuracy: 0.4457
+
+Epoch 00013: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 14/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.4296 - accuracy: 0.4394 - val_loss: 1.2767 - val_accuracy: 0.4938
+
+Epoch 00014: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 15/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4476 - accuracy: 0.4365 - val_loss: 1.2512 - val_accuracy: 0.5207
+
+Epoch 00015: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 16/25
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.4444 - accuracy: 0.4264 - val_loss: 1.2446 - val_accuracy: 0.5014
+
+Epoch 00016: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 17/25
+2080/2080 [==============================] - 243s 117ms/step - loss: 1.3925 - accuracy: 0.4327 - val_loss: 1.2029 - val_accuracy: 0.5457
+
+Epoch 00017: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 18/25
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.4253 - accuracy: 0.4274 - val_loss: 1.2229 - val_accuracy: 0.5529
+
+Epoch 00018: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 19/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4230 - accuracy: 0.4413 - val_loss: 1.4058 - val_accuracy: 0.4558
+
+Epoch 00019: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 20/25
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.3568 - accuracy: 0.4750 - val_loss: 1.1598 - val_accuracy: 0.5562
+
+Epoch 00020: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 21/25
+2080/2080 [==============================] - 243s 117ms/step - loss: 1.3356 - accuracy: 0.4774 - val_loss: 1.1991 - val_accuracy: 0.5250
+
+Epoch 00021: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 22/25
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.3187 - accuracy: 0.4846 - val_loss: 1.1506 - val_accuracy: 0.5615
+
+Epoch 00022: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 23/25
+2080/2080 [==============================] - 242s 116ms/step - loss: 1.3020 - accuracy: 0.4827 - val_loss: 1.1712 - val_accuracy: 0.5303
+
+Epoch 00023: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 24/25
+2080/2080 [==============================] - 242s 116ms/step - loss: 1.3255 - accuracy: 0.4861 - val_loss: 1.2148 - val_accuracy: 0.5207
+
+Epoch 00024: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+Epoch 25/25
+2080/2080 [==============================] - 242s 116ms/step - loss: 1.3044 - accuracy: 0.4822 - val_loss: 1.1997 - val_accuracy: 0.5159
+
+Epoch 00025: saving model to v2_convdropout0.5densedropout0.4weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1050_ITS_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1069_ITH_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1038_ITH_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1055_MTI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1035_ITS_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1039_TSI_SAD_XX.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.4041084938479544
+Dev set accuracy: 0.3721804618835449
+(tensorflow) Evangelie:panotti evangelie$ python experiments.py
+['/Users/evangelie/Documents/GitHub/panotti', '/miniconda3/envs/tensorflow/lib/python37.zip', '/miniconda3/envs/tensorflow/lib/python3.7', '/miniconda3/envs/tensorflow/lib/python3.7/lib-dynload', '/Users/evangelie/.local/lib/python3.7/site-packages', '/miniconda3/envs/tensorflow/lib/python3.7/site-packages']
+3.7.5 (default, Oct 25 2019, 10:52:18) 
+[Clang 4.0.1 (tags/RELEASE_401/final)]
+Using TensorFlow backend.
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1055_IWL_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1072_DFA_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1089_ITS_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1011_IEO_HAP_MD.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1067_MTI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1030_ITS_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+2019-11-25 20:31:04.314623: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2019-11-25 20:31:04.314949: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_1 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_2 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_3 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_4 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_5 (Activation)    (None, 128)               0         
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/50
+2080/2080 [==============================] - 249s 120ms/step - loss: 2.6230 - accuracy: 0.2861 - val_loss: 2.2770 - val_accuracy: 0.1990
+
+Epoch 00001: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 2/50
+2080/2080 [==============================] - 244s 117ms/step - loss: 1.5984 - accuracy: 0.3582 - val_loss: 2.0856 - val_accuracy: 0.2683
+
+Epoch 00002: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 3/50
+2080/2080 [==============================] - 243s 117ms/step - loss: 1.5645 - accuracy: 0.3668 - val_loss: 1.4789 - val_accuracy: 0.4043
+
+Epoch 00003: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 4/50
+2080/2080 [==============================] - 244s 117ms/step - loss: 1.5163 - accuracy: 0.3808 - val_loss: 1.4795 - val_accuracy: 0.3745
+
+Epoch 00004: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 5/50
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.5213 - accuracy: 0.3889 - val_loss: 1.8474 - val_accuracy: 0.2870
+
+Epoch 00005: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 6/50
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.4775 - accuracy: 0.4231 - val_loss: 1.8342 - val_accuracy: 0.4221
+
+Epoch 00006: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 7/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.4319 - accuracy: 0.4197 - val_loss: 1.6456 - val_accuracy: 0.3505
+
+Epoch 00007: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 8/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.4660 - accuracy: 0.4370 - val_loss: 1.1948 - val_accuracy: 0.5125
+
+Epoch 00008: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 9/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.3505 - accuracy: 0.4587 - val_loss: 1.1645 - val_accuracy: 0.5404
+
+Epoch 00009: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 10/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.3672 - accuracy: 0.4654 - val_loss: 1.2975 - val_accuracy: 0.4865
+
+Epoch 00010: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 11/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.3408 - accuracy: 0.4644 - val_loss: 1.1665 - val_accuracy: 0.5385
+
+Epoch 00011: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 12/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.2899 - accuracy: 0.4938 - val_loss: 1.1634 - val_accuracy: 0.5370
+
+Epoch 00012: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 13/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.2772 - accuracy: 0.5024 - val_loss: 1.0712 - val_accuracy: 0.5827
+
+Epoch 00013: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 14/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.2124 - accuracy: 0.5236 - val_loss: 0.9962 - val_accuracy: 0.6260
+
+Epoch 00014: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 15/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.2237 - accuracy: 0.5197 - val_loss: 0.9973 - val_accuracy: 0.6101
+
+Epoch 00015: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 16/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.1932 - accuracy: 0.5447 - val_loss: 1.2003 - val_accuracy: 0.5212
+
+Epoch 00016: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 17/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.1495 - accuracy: 0.5611 - val_loss: 0.8753 - val_accuracy: 0.6962
+
+Epoch 00017: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 18/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.0964 - accuracy: 0.5683 - val_loss: 0.8206 - val_accuracy: 0.6938
+
+Epoch 00018: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 19/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.1482 - accuracy: 0.5481 - val_loss: 0.8915 - val_accuracy: 0.6851
+
+Epoch 00019: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 20/50
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.0664 - accuracy: 0.5813 - val_loss: 0.7477 - val_accuracy: 0.7255
+
+Epoch 00020: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 21/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.0452 - accuracy: 0.6019 - val_loss: 0.7074 - val_accuracy: 0.7563
+
+Epoch 00021: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 22/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.0136 - accuracy: 0.6125 - val_loss: 0.6815 - val_accuracy: 0.7712
+
+Epoch 00022: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 23/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.9841 - accuracy: 0.6135 - val_loss: 0.7325 - val_accuracy: 0.7183
+
+Epoch 00023: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 24/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.9337 - accuracy: 0.6375 - val_loss: 0.6735 - val_accuracy: 0.7486
+
+Epoch 00024: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 25/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.9141 - accuracy: 0.6582 - val_loss: 0.6013 - val_accuracy: 0.8250
+
+Epoch 00025: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 26/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.8747 - accuracy: 0.6788 - val_loss: 0.5228 - val_accuracy: 0.8418
+
+Epoch 00026: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 27/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.8553 - accuracy: 0.6750 - val_loss: 0.6011 - val_accuracy: 0.7793
+
+Epoch 00027: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 28/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.8222 - accuracy: 0.6986 - val_loss: 0.4497 - val_accuracy: 0.8649
+
+Epoch 00028: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 29/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.7637 - accuracy: 0.7178 - val_loss: 0.4885 - val_accuracy: 0.8409
+
+Epoch 00029: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 30/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.7703 - accuracy: 0.7183 - val_loss: 0.4634 - val_accuracy: 0.8673
+
+Epoch 00030: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 31/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.7062 - accuracy: 0.7375 - val_loss: 0.4278 - val_accuracy: 0.8572
+
+Epoch 00031: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 32/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.6759 - accuracy: 0.7495 - val_loss: 0.3959 - val_accuracy: 0.8798
+
+Epoch 00032: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 33/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.6841 - accuracy: 0.7404 - val_loss: 0.3804 - val_accuracy: 0.8899
+
+Epoch 00033: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 34/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.6367 - accuracy: 0.7606 - val_loss: 0.3207 - val_accuracy: 0.9058
+
+Epoch 00034: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 35/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.6332 - accuracy: 0.7644 - val_loss: 0.2517 - val_accuracy: 0.9389
+
+Epoch 00035: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 36/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.5701 - accuracy: 0.7856 - val_loss: 0.2786 - val_accuracy: 0.9226
+
+Epoch 00036: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 37/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.5212 - accuracy: 0.8125 - val_loss: 0.2391 - val_accuracy: 0.9438
+
+Epoch 00037: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 38/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.5136 - accuracy: 0.8216 - val_loss: 0.2124 - val_accuracy: 0.9505
+
+Epoch 00038: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 39/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.4897 - accuracy: 0.8236 - val_loss: 0.2084 - val_accuracy: 0.9659
+
+Epoch 00039: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 40/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.4771 - accuracy: 0.8341 - val_loss: 0.1682 - val_accuracy: 0.9769
+
+Epoch 00040: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 41/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.4415 - accuracy: 0.8505 - val_loss: 0.1457 - val_accuracy: 0.9798
+
+Epoch 00041: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 42/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.4313 - accuracy: 0.8409 - val_loss: 0.1812 - val_accuracy: 0.9635
+
+Epoch 00042: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 43/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.4157 - accuracy: 0.8490 - val_loss: 0.1473 - val_accuracy: 0.9769
+
+Epoch 00043: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 44/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.3711 - accuracy: 0.8755 - val_loss: 0.1110 - val_accuracy: 0.9861
+
+Epoch 00044: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 45/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.3496 - accuracy: 0.8947 - val_loss: 0.1038 - val_accuracy: 0.9894
+
+Epoch 00045: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 46/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.3441 - accuracy: 0.8865 - val_loss: 0.1025 - val_accuracy: 0.9952
+
+Epoch 00046: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 47/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.3642 - accuracy: 0.8817 - val_loss: 0.1356 - val_accuracy: 0.9750
+
+Epoch 00047: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 48/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.3466 - accuracy: 0.8832 - val_loss: 0.1013 - val_accuracy: 0.9928
+
+Epoch 00048: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 49/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.3244 - accuracy: 0.9010 - val_loss: 0.1038 - val_accuracy: 0.9856
+
+Epoch 00049: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+Epoch 50/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.2941 - accuracy: 0.9067 - val_loss: 0.0741 - val_accuracy: 0.9971
+
+Epoch 00050: saving model to v3_convdropout0.3densedropout0.2weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1089_WSI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1058_TAI_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1020_TAI_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1070_DFA_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1055_IWL_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1057_IOM_SAD_XX.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 2.2209900052923905
+Dev set accuracy: 0.49624061584472656
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1007_TIE_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1049_TAI_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1050_ITH_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1060_ITS_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1031_ITS_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1018_IWL_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_2"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_5 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_6 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_6 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_7 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_5 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_7 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_8 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_6 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_8 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_9 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_7 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_10 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_8 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/50
+2080/2080 [==============================] - 242s 116ms/step - loss: 2.7274 - accuracy: 0.2755 - val_loss: 2.4865 - val_accuracy: 0.2163
+
+Epoch 00001: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 2/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.6459 - accuracy: 0.3562 - val_loss: 2.2196 - val_accuracy: 0.2428
+
+Epoch 00002: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 3/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.6370 - accuracy: 0.3567 - val_loss: 2.2845 - val_accuracy: 0.3010
+
+Epoch 00003: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 4/50
+2080/2080 [==============================] - 240s 116ms/step - loss: 1.5781 - accuracy: 0.3697 - val_loss: 1.4418 - val_accuracy: 0.4029
+
+Epoch 00004: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 5/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5064 - accuracy: 0.3875 - val_loss: 1.4018 - val_accuracy: 0.4644
+
+Epoch 00005: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 6/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5094 - accuracy: 0.3904 - val_loss: 1.4129 - val_accuracy: 0.4053
+
+Epoch 00006: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 7/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5098 - accuracy: 0.4010 - val_loss: 1.6256 - val_accuracy: 0.3481
+
+Epoch 00007: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 8/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.4713 - accuracy: 0.4168 - val_loss: 1.2719 - val_accuracy: 0.4726
+
+Epoch 00008: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 9/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.3943 - accuracy: 0.4322 - val_loss: 1.1885 - val_accuracy: 0.5462
+
+Epoch 00009: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 10/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.3877 - accuracy: 0.4490 - val_loss: 1.3075 - val_accuracy: 0.4851
+
+Epoch 00010: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 11/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.3600 - accuracy: 0.4519 - val_loss: 1.1384 - val_accuracy: 0.5562
+
+Epoch 00011: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 12/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.3581 - accuracy: 0.4582 - val_loss: 1.1407 - val_accuracy: 0.5308
+
+Epoch 00012: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 13/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.3186 - accuracy: 0.4793 - val_loss: 1.1938 - val_accuracy: 0.5538
+
+Epoch 00013: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 14/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.2421 - accuracy: 0.5038 - val_loss: 1.0703 - val_accuracy: 0.5861
+
+Epoch 00014: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 15/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.2874 - accuracy: 0.4928 - val_loss: 0.9860 - val_accuracy: 0.6466
+
+Epoch 00015: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 16/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.2397 - accuracy: 0.5159 - val_loss: 0.9730 - val_accuracy: 0.6683
+
+Epoch 00016: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 17/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.2244 - accuracy: 0.5312 - val_loss: 0.9826 - val_accuracy: 0.6514
+
+Epoch 00017: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 18/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.1648 - accuracy: 0.5596 - val_loss: 0.9141 - val_accuracy: 0.6774
+
+Epoch 00018: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 19/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.1551 - accuracy: 0.5462 - val_loss: 0.8833 - val_accuracy: 0.6880
+
+Epoch 00019: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 20/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.1307 - accuracy: 0.5654 - val_loss: 0.8459 - val_accuracy: 0.7120
+
+Epoch 00020: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 21/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.1266 - accuracy: 0.5582 - val_loss: 0.8122 - val_accuracy: 0.7139
+
+Epoch 00021: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 22/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.0942 - accuracy: 0.5808 - val_loss: 0.7819 - val_accuracy: 0.7423
+
+Epoch 00022: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 23/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.0662 - accuracy: 0.6067 - val_loss: 0.7843 - val_accuracy: 0.7216
+
+Epoch 00023: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 24/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.0289 - accuracy: 0.6144 - val_loss: 0.7930 - val_accuracy: 0.7159
+
+Epoch 00024: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 25/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.0113 - accuracy: 0.6183 - val_loss: 0.7161 - val_accuracy: 0.7433
+
+Epoch 00025: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 26/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.0010 - accuracy: 0.6130 - val_loss: 0.6675 - val_accuracy: 0.7726
+
+Epoch 00026: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 27/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.9821 - accuracy: 0.6274 - val_loss: 0.6885 - val_accuracy: 0.7721
+
+Epoch 00027: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 28/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.9564 - accuracy: 0.6380 - val_loss: 0.6406 - val_accuracy: 0.7822
+
+Epoch 00028: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 29/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.9153 - accuracy: 0.6577 - val_loss: 0.7005 - val_accuracy: 0.7510
+
+Epoch 00029: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 30/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.8754 - accuracy: 0.6644 - val_loss: 0.6103 - val_accuracy: 0.7995
+
+Epoch 00030: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 31/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.8962 - accuracy: 0.6601 - val_loss: 0.5569 - val_accuracy: 0.8212
+
+Epoch 00031: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 32/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.8378 - accuracy: 0.6745 - val_loss: 0.4875 - val_accuracy: 0.8562
+
+Epoch 00032: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 33/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.8377 - accuracy: 0.6750 - val_loss: 0.4768 - val_accuracy: 0.8529
+
+Epoch 00033: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 34/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.7941 - accuracy: 0.7077 - val_loss: 0.4322 - val_accuracy: 0.8827
+
+Epoch 00034: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 35/50
+2080/2080 [==============================] - 240s 116ms/step - loss: 0.7848 - accuracy: 0.7005 - val_loss: 0.4385 - val_accuracy: 0.8813
+
+Epoch 00035: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 36/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.7435 - accuracy: 0.7236 - val_loss: 0.3705 - val_accuracy: 0.8986
+
+Epoch 00036: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 37/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.7524 - accuracy: 0.7226 - val_loss: 0.3851 - val_accuracy: 0.8971
+
+Epoch 00037: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 38/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.7238 - accuracy: 0.7317 - val_loss: 0.3256 - val_accuracy: 0.9250
+
+Epoch 00038: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 39/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.6757 - accuracy: 0.7563 - val_loss: 0.5080 - val_accuracy: 0.8058
+
+Epoch 00039: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 40/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.6735 - accuracy: 0.7490 - val_loss: 0.3074 - val_accuracy: 0.9322
+
+Epoch 00040: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 41/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.6801 - accuracy: 0.7462 - val_loss: 0.2535 - val_accuracy: 0.9567
+
+Epoch 00041: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 42/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.6548 - accuracy: 0.7630 - val_loss: 0.2581 - val_accuracy: 0.9481
+
+Epoch 00042: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 43/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.5923 - accuracy: 0.7894 - val_loss: 0.2513 - val_accuracy: 0.9486
+
+Epoch 00043: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 44/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.5644 - accuracy: 0.7986 - val_loss: 0.2502 - val_accuracy: 0.9553
+
+Epoch 00044: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 45/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.5830 - accuracy: 0.7812 - val_loss: 0.1938 - val_accuracy: 0.9716
+
+Epoch 00045: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 46/50
+2080/2080 [==============================] - 241s 116ms/step - loss: 0.5771 - accuracy: 0.7812 - val_loss: 0.1936 - val_accuracy: 0.9630
+
+Epoch 00046: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 47/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.5458 - accuracy: 0.8043 - val_loss: 0.2119 - val_accuracy: 0.9649
+
+Epoch 00047: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 48/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.5085 - accuracy: 0.8240 - val_loss: 0.1699 - val_accuracy: 0.9779
+
+Epoch 00048: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 49/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.4722 - accuracy: 0.8327 - val_loss: 0.1617 - val_accuracy: 0.9784
+
+Epoch 00049: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+Epoch 50/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 0.4900 - accuracy: 0.8274 - val_loss: 0.1725 - val_accuracy: 0.9707
+
+Epoch 00050: saving model to v3_convdropout0.3densedropout0.4weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1013_TSI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1078_ITS_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1017_IEO_FEA_LO.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1041_IEO_HAP_LO.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1083_IWL_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1040_IOM_SAD_XX.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.7336809814424443
+Dev set accuracy: 0.4887218177318573
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1049_TSI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1006_ITS_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1080_TSI_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1039_MTI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1063_MTI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1030_ITH_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_3"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_9 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_11 (Activation)   (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_7 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_10 (MaxPooling (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_12 (Activation)   (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_9 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_8 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_11 (MaxPooling (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_13 (Activation)   (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_10 (Dropout)         (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_9 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_12 (MaxPooling (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_14 (Activation)   (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_11 (Dropout)         (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_3 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_15 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_12 (Dropout)         (None, 128)               0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/50
+2080/2080 [==============================] - 246s 118ms/step - loss: 2.9583 - accuracy: 0.2582 - val_loss: 3.1494 - val_accuracy: 0.1841
+
+Epoch 00001: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 2/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.6770 - accuracy: 0.3236 - val_loss: 2.3432 - val_accuracy: 0.2976
+
+Epoch 00002: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 3/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.6229 - accuracy: 0.3404 - val_loss: 1.7286 - val_accuracy: 0.3034
+
+Epoch 00003: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 4/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.6193 - accuracy: 0.3462 - val_loss: 1.7101 - val_accuracy: 0.3183
+
+Epoch 00004: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 5/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5801 - accuracy: 0.3442 - val_loss: 1.5999 - val_accuracy: 0.3413
+
+Epoch 00005: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 6/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5762 - accuracy: 0.3620 - val_loss: 1.5828 - val_accuracy: 0.3678
+
+Epoch 00006: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 7/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.5279 - accuracy: 0.3851 - val_loss: 1.4801 - val_accuracy: 0.4120
+
+Epoch 00007: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 8/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.5200 - accuracy: 0.3889 - val_loss: 1.3446 - val_accuracy: 0.4870
+
+Epoch 00008: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 9/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.5145 - accuracy: 0.3880 - val_loss: 1.4172 - val_accuracy: 0.4096
+
+Epoch 00009: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 10/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4775 - accuracy: 0.3962 - val_loss: 1.5038 - val_accuracy: 0.4159
+
+Epoch 00010: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 11/50
+2080/2080 [==============================] - 242s 116ms/step - loss: 1.4901 - accuracy: 0.3942 - val_loss: 1.3373 - val_accuracy: 0.4976
+
+Epoch 00011: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 12/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4622 - accuracy: 0.4010 - val_loss: 1.3377 - val_accuracy: 0.4615
+
+Epoch 00012: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 13/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4706 - accuracy: 0.4024 - val_loss: 1.3937 - val_accuracy: 0.4779
+
+Epoch 00013: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 14/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.4141 - accuracy: 0.4389 - val_loss: 1.5401 - val_accuracy: 0.4337
+
+Epoch 00014: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 15/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4117 - accuracy: 0.4216 - val_loss: 1.2946 - val_accuracy: 0.5106
+
+Epoch 00015: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 16/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4194 - accuracy: 0.4380 - val_loss: 1.2664 - val_accuracy: 0.4827
+
+Epoch 00016: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 17/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3872 - accuracy: 0.4418 - val_loss: 1.4070 - val_accuracy: 0.4534
+
+Epoch 00017: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 18/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3695 - accuracy: 0.4490 - val_loss: 1.3548 - val_accuracy: 0.5010
+
+Epoch 00018: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 19/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.3944 - accuracy: 0.4433 - val_loss: 1.6588 - val_accuracy: 0.4341
+
+Epoch 00019: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 20/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3462 - accuracy: 0.4707 - val_loss: 1.2118 - val_accuracy: 0.5173
+
+Epoch 00020: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 21/50
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.3252 - accuracy: 0.4625 - val_loss: 1.1449 - val_accuracy: 0.5510
+
+Epoch 00021: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 22/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.3284 - accuracy: 0.4683 - val_loss: 1.2857 - val_accuracy: 0.5034
+
+Epoch 00022: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 23/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.3263 - accuracy: 0.4659 - val_loss: 1.0940 - val_accuracy: 0.5721
+
+Epoch 00023: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 24/50
+2080/2080 [==============================] - 240s 116ms/step - loss: 1.2646 - accuracy: 0.4962 - val_loss: 1.1371 - val_accuracy: 0.5495
+
+Epoch 00024: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 25/50
+2080/2080 [==============================] - 240s 116ms/step - loss: 1.2734 - accuracy: 0.4870 - val_loss: 1.1015 - val_accuracy: 0.5716
+
+Epoch 00025: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 26/50
+2080/2080 [==============================] - 245s 118ms/step - loss: 1.2587 - accuracy: 0.5019 - val_loss: 1.0595 - val_accuracy: 0.5889
+
+Epoch 00026: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 27/50
+2080/2080 [==============================] - 244s 117ms/step - loss: 1.2451 - accuracy: 0.5149 - val_loss: 1.1771 - val_accuracy: 0.5264
+
+Epoch 00027: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 28/50
+2080/2080 [==============================] - 244s 118ms/step - loss: 1.2481 - accuracy: 0.5005 - val_loss: 1.0615 - val_accuracy: 0.5755
+
+Epoch 00028: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 29/50
+2080/2080 [==============================] - 250s 120ms/step - loss: 1.2106 - accuracy: 0.5120 - val_loss: 1.1018 - val_accuracy: 0.5712
+
+Epoch 00029: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 30/50
+2080/2080 [==============================] - 247s 119ms/step - loss: 1.1983 - accuracy: 0.5284 - val_loss: 1.1086 - val_accuracy: 0.5923
+
+Epoch 00030: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 31/50
+2080/2080 [==============================] - 245s 118ms/step - loss: 1.1867 - accuracy: 0.5337 - val_loss: 1.1610 - val_accuracy: 0.5736
+
+Epoch 00031: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 32/50
+2080/2080 [==============================] - 242s 117ms/step - loss: 1.1911 - accuracy: 0.5260 - val_loss: 1.0204 - val_accuracy: 0.6130
+
+Epoch 00032: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 33/50
+2080/2080 [==============================] - 244s 117ms/step - loss: 1.1748 - accuracy: 0.5260 - val_loss: 1.0073 - val_accuracy: 0.6019
+
+Epoch 00033: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 34/50
+2080/2080 [==============================] - 244s 117ms/step - loss: 1.1467 - accuracy: 0.5418 - val_loss: 1.0312 - val_accuracy: 0.6274
+
+Epoch 00034: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 35/50
+2080/2080 [==============================] - 243s 117ms/step - loss: 1.1139 - accuracy: 0.5635 - val_loss: 0.9434 - val_accuracy: 0.6447
+
+Epoch 00035: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 36/50
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.0943 - accuracy: 0.5764 - val_loss: 0.9545 - val_accuracy: 0.6337
+
+Epoch 00036: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 37/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.1418 - accuracy: 0.5577 - val_loss: 1.0013 - val_accuracy: 0.6149
+
+Epoch 00037: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 38/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0677 - accuracy: 0.5837 - val_loss: 1.0158 - val_accuracy: 0.6337
+
+Epoch 00038: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 39/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.0843 - accuracy: 0.5813 - val_loss: 0.9070 - val_accuracy: 0.6413
+
+Epoch 00039: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 40/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.0513 - accuracy: 0.5856 - val_loss: 0.8278 - val_accuracy: 0.6745
+
+Epoch 00040: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 41/50
+2080/2080 [==============================] - 238s 115ms/step - loss: 1.0105 - accuracy: 0.6077 - val_loss: 0.7574 - val_accuracy: 0.7202
+
+Epoch 00041: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 42/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.0621 - accuracy: 0.5904 - val_loss: 0.8281 - val_accuracy: 0.6938
+
+Epoch 00042: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 43/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 1.0032 - accuracy: 0.6077 - val_loss: 0.8316 - val_accuracy: 0.6793
+
+Epoch 00043: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 44/50
+2080/2080 [==============================] - 238s 114ms/step - loss: 0.9874 - accuracy: 0.6212 - val_loss: 0.7385 - val_accuracy: 0.7260
+
+Epoch 00044: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 45/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9737 - accuracy: 0.6077 - val_loss: 0.8753 - val_accuracy: 0.6606
+
+Epoch 00045: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 46/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9383 - accuracy: 0.6351 - val_loss: 0.6858 - val_accuracy: 0.7389
+
+Epoch 00046: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 47/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.9347 - accuracy: 0.6370 - val_loss: 0.6470 - val_accuracy: 0.7721
+
+Epoch 00047: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 48/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9414 - accuracy: 0.6389 - val_loss: 0.7131 - val_accuracy: 0.7452
+
+Epoch 00048: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 49/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9286 - accuracy: 0.6351 - val_loss: 0.7424 - val_accuracy: 0.7192
+
+Epoch 00049: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+Epoch 50/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 0.8997 - accuracy: 0.6601 - val_loss: 0.6646 - val_accuracy: 0.7567
+
+Epoch 00050: saving model to v3_convdropout0.5densedropout0.2weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1085_IWW_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1072_ITS_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1018_TAI_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1042_TIE_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1035_ITS_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1019_IEO_SAD_HI.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.5893319307413316
+Dev set accuracy: 0.49624061584472656
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1079_ITS_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1022_ITH_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1048_IEO_FEA_MD.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1053_IWW_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1069_ITS_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1072_IOM_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_4"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_13 (MaxPooling (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_16 (Activation)   (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_10 (Conv2D)           (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_14 (MaxPooling (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_17 (Activation)   (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_13 (Dropout)         (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_11 (Conv2D)           (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_15 (MaxPooling (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_18 (Activation)   (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_14 (Dropout)         (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_12 (Conv2D)           (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_16 (MaxPooling (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_19 (Activation)   (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_15 (Dropout)         (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_4 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_7 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_20 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_16 (Dropout)         (None, 128)               0         
+_________________________________________________________________
+dense_8 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/50
+2080/2080 [==============================] - 245s 118ms/step - loss: 3.1374 - accuracy: 0.2678 - val_loss: 3.3363 - val_accuracy: 0.2058
+
+Epoch 00001: saving model to v3_convdropout0.5densedropout0.4weights.hdf5
+Epoch 2/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.8655 - accuracy: 0.3072 - val_loss: 2.6508 - val_accuracy: 0.2135
+
+Epoch 00002: saving model to v3_convdropout0.5densedropout0.4weights.hdf5
+Epoch 3/50
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.7747 - accuracy: 0.3231 - val_loss: 2.3165 - val_accuracy: 0.2558
+
+Epoch 00003: saving model to v3_convdropout0.5densedropout0.4weights.hdf5
+Epoch 4/50
+2080/2080 [==============================] - 239s 115ms/step - loss: 1.7065 - accuracy: 0.3288 - val_loss: 1.6510 - val_accuracy: 0.3409
+
+Epoch 00004: saving model to v3_convdropout0.5densedropout0.4weights.hdf5
+Epoch 5/50
+2000/2080 [===========================>..] - ETA: 6s - loss: 1.6656 - accuracy: 0.3565 ^CTraceback (most recent call last):
+  File "experiments.py", line 124, in <module>
+    newrundropoutexperiment([0.3,0.5], [0.2,0.4], 50)
+  File "experiments.py", line 106, in newrundropoutexperiment
+    train_network(weights_file_out = path, epochs=epochnum, batch_size=80, val_split=0, convdropout=c, densdropout=d)
+  File "experiments.py", line 63, in train_network
+    verbose=1, callbacks=[checkpointer], validation_split=val_split, validation_data=(X_train, Y_train))
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/training.py", line 1239, in fit
+    validation_freq=validation_freq)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/training_arrays.py", line 210, in fit_loop
+    verbose=0)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/training_arrays.py", line 449, in test_loop
+    batch_outs = f(ins_batch)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/keras/backend.py", line 3740, in __call__
+    outputs = self._graph_fn(*converted_inputs)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1081, in __call__
+    return self._call_impl(args, kwargs)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1121, in _call_impl
+    return self._call_flat(args, self.captured_inputs, cancellation_manager)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1224, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 511, in call
+    ctx=ctx)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/execute.py", line 61, in quick_execute
+    num_outputs)
+KeyboardInterrupt
+(tensorflow) Evangelie:panotti evangelie$ 

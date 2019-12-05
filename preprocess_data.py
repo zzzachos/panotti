@@ -75,7 +75,7 @@ def convert_one_file(printevery, class_index, class_files, nb_classes, classname
 
     if not already_split and (not nosplit):
         if (file_index >= n_train):
-            outsub = "Test/"
+            outsub = "Dev/"
         else:
             outsub = "Train/"
     elif nosplit:
@@ -89,16 +89,16 @@ def convert_one_file(printevery, class_index, class_files, nb_classes, classname
 
 
 
-def preprocess_dataset(inpath="Samples/", outpath="Preproc/", train_percentage=0.8, resample=None, already_split=False,
+def preprocess_dataset(inpath="Samples/", outpath="Preprocessed/", train_percentage=0.8, resample=None, already_split=True,
     nosplit=False, sequential=False, mono=False, dur=None, clean=False, out_format='npy', mels=96, phase=False):
-
+#ZZZ changed already_split default value because we are following our previously-done splitting. 
     if (resample is not None):
         print(" Will be resampling at",resample,"Hz",flush=True)
 
     if (True == already_split):
         print(" Data is already split into Train & Test",flush=True)
         class_names = get_class_names(path=inpath+"Train/")   # get the names of the subdirectories
-        sampleset_subdirs = ["Train/","Test/"]
+        sampleset_subdirs = ["Train/","Dev/"]
     elif nosplit:
         print(" All files output to same directory",flush=True)
         class_names = get_class_names(path=inpath)   # get the names of the subdirectories
@@ -128,7 +128,7 @@ def preprocess_dataset(inpath="Samples/", outpath="Preproc/", train_percentage=0
         test_outpath = outpath
     else:
         train_outpath = outpath+"Train/"
-        test_outpath = outpath+"Test/"
+        test_outpath = outpath+"Dev/"
     if not os.path.exists(outpath):
         os.mkdir( outpath );   # make a new directory for preproc'd files
         if not nosplit:
@@ -153,7 +153,7 @@ def preprocess_dataset(inpath="Samples/", outpath="Preproc/", train_percentage=0
         for class_index, classname in enumerate(class_names):   # go through the classes
             print("")           # at the start of each new class, newline
 
-            # make new Preproc/ subdirectories for class
+            # make new Preprocessed/ subdirectories for class
             if not os.path.exists(train_outpath+classname):
                 print("Making directory ",train_outpath+classname)
                 os.mkdir( train_outpath+classname );
@@ -201,7 +201,7 @@ if __name__ == '__main__':
     parser.add_argument('-c', "--clean", help="Assume 'clean data'; Do not check to find max shape (faster)", action='store_true')
     parser.add_argument('-f','--format', help="format of output file (npz, jpeg, png, etc). Default = npz", type=str, default='npz')
     parser.add_argument('-i','--inpath', help="input directory for audio samples (default='Samples')", type=str, default='Samples')
-    parser.add_argument('-o','--outpath', help="output directory for spectrograms (default='Preproc')", type=str, default='Preproc')
+    parser.add_argument('-o','--outpath', help="output directory for spectrograms (default='Preprocessed')", type=str, default='Preprocessed')
     parser.add_argument("--mels", help="number of mel coefficients to use in spectrograms", type=int, default=96)
     parser.add_argument("--phase", help="Include phase information as extra channels", action='store_true')
 

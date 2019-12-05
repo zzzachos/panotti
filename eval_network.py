@@ -66,7 +66,7 @@ def eval_network(weights_file="weights.hdf5", classpath="Preproc/Test/", batch_s
     n_classes = len(class_names)
 
     # Load the model
-    model, serial_model = setup_model(X_test, class_names, weights_file=weights_file, missing_weights_fatal=True)
+    model, serial_model = setup_model(X_test, class_names, weights_file_in=weights_file, missing_weights_fatal=True)
     model.summary()
 
     num_pred = X_test.shape[0]
@@ -172,7 +172,7 @@ if __name__ == '__main__':
     parser.add_argument('-w', '--weights', #nargs=1, type=argparse.FileType('r'),
         help='weights file in hdf5 format', default="weights.hdf5")
     parser.add_argument('-c', '--classpath', #type=argparse.string,
-        help='test dataset directory with list of classes', default="Preproc/Test/")
+        help='dev dataset directory with list of classes', default="Preprocessed/Dev/")
     parser.add_argument('--batch_size', default=40, type=int, help="Number of clips to send to GPU at once")
 
     args = parser.parse_args()

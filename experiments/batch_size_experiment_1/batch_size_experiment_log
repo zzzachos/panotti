@@ -1,0 +1,743 @@
+(tensorflow) Evangelie:panotti evangelie$ python experiments.py
+['/Users/evangelie/Documents/GitHub/panotti', '/miniconda3/envs/tensorflow/lib/python37.zip', '/miniconda3/envs/tensorflow/lib/python3.7', '/miniconda3/envs/tensorflow/lib/python3.7/lib-dynload', '/Users/evangelie/.local/lib/python3.7/site-packages', '/miniconda3/envs/tensorflow/lib/python3.7/site-packages']
+3.7.5 (default, Oct 25 2019, 10:52:18) 
+[Clang 4.0.1 (tags/RELEASE_401/final)]
+Using TensorFlow backend.
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2120
+total files =  2126 , going to load total_load =  2120
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 1/345: Preprocessed/Train/ANG/1023_IEO_ANG_MD.wa Loading class 1/6: 'ANG', File 101/345: Preprocessed/Train/ANG/1053_TIE_ANG_XX. Loading class 1/6: 'ANG', File 201/345: Preprocessed/Train/ANG/1021_IWL_ANG_XX. Loading class 1/6: 'ANG', File 301/345: Preprocessed/Train/ANG/1035_IEO_ANG_MD. Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1010_TSI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 1/374: Preprocessed/Train/DIS/1038_IEO_DIS_HI.wa Loading class 2/6: 'DIS', File 101/374: Preprocessed/Train/DIS/1015_DFA_DIS_XX. Loading class 2/6: 'DIS', File 201/374: Preprocessed/Train/DIS/1047_IWW_DIS_XX. Loading class 2/6: 'DIS', File 301/374: Preprocessed/Train/DIS/1070_TSI_DIS_XX. Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1040_IWL_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 1/343: Preprocessed/Train/FEA/1040_ITH_FEA_XX.wa Loading class 3/6: 'FEA', File 101/343: Preprocessed/Train/FEA/1085_DFA_FEA_XX. Loading class 3/6: 'FEA', File 201/343: Preprocessed/Train/FEA/1002_TSI_FEA_XX. Loading class 3/6: 'FEA', File 301/343: Preprocessed/Train/FEA/1037_MTI_FEA_XX. Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1013_IEO_FEA_LO.wav.npz                  
+ Loading class 4/6: 'HAP', File 1/363: Preprocessed/Train/HAP/1091_TSI_HAP_XX.wa Loading class 4/6: 'HAP', File 101/363: Preprocessed/Train/HAP/1018_DFA_HAP_XX. Loading class 4/6: 'HAP', File 201/363: Preprocessed/Train/HAP/1003_IWL_HAP_XX. Loading class 4/6: 'HAP', File 301/363: Preprocessed/Train/HAP/1001_IEO_HAP_LO. Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1001_IEO_HAP_HI.wav.npz                  
+ Loading class 5/6: 'NEU', File 1/328: Preprocessed/Train/NEU/1013_ITH_NEU_XX.wa Loading class 5/6: 'NEU', File 101/328: Preprocessed/Train/NEU/1015_WSI_NEU_XX. Loading class 5/6: 'NEU', File 201/328: Preprocessed/Train/NEU/1061_ITH_NEU_XX. Loading class 5/6: 'NEU', File 301/328: Preprocessed/Train/NEU/1001_IEO_NEU_XX. Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1056_IWW_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 1/373: Preprocessed/Train/SAD/1086_MTI_SAD_XX.wa Loading class 6/6: 'SAD', File 101/373: Preprocessed/Train/SAD/1001_IEO_SAD_HI. Loading class 6/6: 'SAD', File 201/373: Preprocessed/Train/SAD/1054_IOM_SAD_XX. Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1079_DFA_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2120, 96, 420, 1) , channels =  1
+2019-11-24 18:55:58.130391: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2019-11-24 18:55:58.130676: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_1 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_2 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_3 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_4 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_5 (Activation)    (None, 128)               0         
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2120 samples, validate on 2120 samples
+Epoch 1/50
+2120/2120 [==============================] - 304s 144ms/step - loss: 2.0456 - accuracy: 0.3193 - val_loss: 1.7416 - val_accuracy: 0.2807
+
+Epoch 00001: saving model to batchsize20weights.hdf5
+Epoch 2/50
+2120/2120 [==============================] - 251s 118ms/step - loss: 1.6124 - accuracy: 0.3585 - val_loss: 1.4695 - val_accuracy: 0.4189
+
+Epoch 00002: saving model to batchsize20weights.hdf5
+Epoch 3/50
+2120/2120 [==============================] - 257s 121ms/step - loss: 1.5840 - accuracy: 0.3703 - val_loss: 1.3807 - val_accuracy: 0.4670
+
+Epoch 00003: saving model to batchsize20weights.hdf5
+Epoch 4/50
+2120/2120 [==============================] - 252s 119ms/step - loss: 1.5317 - accuracy: 0.4066 - val_loss: 1.7883 - val_accuracy: 0.4146
+
+Epoch 00004: saving model to batchsize20weights.hdf5
+Epoch 5/50
+2120/2120 [==============================] - 249s 118ms/step - loss: 1.4653 - accuracy: 0.4189 - val_loss: 1.4304 - val_accuracy: 0.4618
+
+Epoch 00005: saving model to batchsize20weights.hdf5
+Epoch 6/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.4164 - accuracy: 0.4392 - val_loss: 1.3004 - val_accuracy: 0.5354
+
+Epoch 00006: saving model to batchsize20weights.hdf5
+Epoch 7/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.3878 - accuracy: 0.4481 - val_loss: 1.2524 - val_accuracy: 0.5057
+
+Epoch 00007: saving model to batchsize20weights.hdf5
+Epoch 8/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.3368 - accuracy: 0.4896 - val_loss: 1.1203 - val_accuracy: 0.5505
+
+Epoch 00008: saving model to batchsize20weights.hdf5
+Epoch 9/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.2646 - accuracy: 0.5113 - val_loss: 1.0681 - val_accuracy: 0.6052
+
+Epoch 00009: saving model to batchsize20weights.hdf5
+Epoch 10/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.2112 - accuracy: 0.5184 - val_loss: 0.9551 - val_accuracy: 0.6533
+
+Epoch 00010: saving model to batchsize20weights.hdf5
+Epoch 11/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.1599 - accuracy: 0.5500 - val_loss: 1.0274 - val_accuracy: 0.5991
+
+Epoch 00011: saving model to batchsize20weights.hdf5
+Epoch 12/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.1360 - accuracy: 0.5660 - val_loss: 0.9781 - val_accuracy: 0.6217
+
+Epoch 00012: saving model to batchsize20weights.hdf5
+Epoch 13/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.0551 - accuracy: 0.5958 - val_loss: 0.8369 - val_accuracy: 0.6901
+
+Epoch 00013: saving model to batchsize20weights.hdf5
+Epoch 14/50
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.0201 - accuracy: 0.6094 - val_loss: 0.8100 - val_accuracy: 0.7033
+
+Epoch 00014: saving model to batchsize20weights.hdf5
+Epoch 15/50
+2120/2120 [==============================] - 249s 118ms/step - loss: 0.9510 - accuracy: 0.6363 - val_loss: 0.5769 - val_accuracy: 0.7929
+
+Epoch 00015: saving model to batchsize20weights.hdf5
+Epoch 16/50
+2120/2120 [==============================] - 249s 118ms/step - loss: 0.8840 - accuracy: 0.6585 - val_loss: 0.5763 - val_accuracy: 0.7887
+
+Epoch 00016: saving model to batchsize20weights.hdf5
+Epoch 17/50
+2120/2120 [==============================] - 251s 118ms/step - loss: 0.8806 - accuracy: 0.6684 - val_loss: 0.7000 - val_accuracy: 0.7623
+
+Epoch 00017: saving model to batchsize20weights.hdf5
+Epoch 18/50
+2120/2120 [==============================] - 258s 122ms/step - loss: 0.7921 - accuracy: 0.7075 - val_loss: 0.4890 - val_accuracy: 0.8297
+
+Epoch 00018: saving model to batchsize20weights.hdf5
+Epoch 19/50
+2120/2120 [==============================] - 263s 124ms/step - loss: 0.7701 - accuracy: 0.7198 - val_loss: 0.4834 - val_accuracy: 0.8443
+
+Epoch 00019: saving model to batchsize20weights.hdf5
+Epoch 20/50
+1760/2120 [=======================>......] - ETA: 30s - loss: 0.7003 - accuracy: 0.7494^CTraceback (most recent call last):
+  File "experiments.py", line 109, in <module>
+    runbatchsizeexperiment([20,40,80])
+  File "experiments.py", line 100, in runbatchsizeexperiment
+    train_network(weights_file_out = path, epochs=25, batch_size = l, val_split=0,convdropout=0.3, densdropout=0.2)
+  File "experiments.py", line 63, in train_network
+    verbose=1, callbacks=[checkpointer], validation_split=val_split, validation_data=(X_train, Y_train))
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/training.py", line 1239, in fit
+    validation_freq=validation_freq)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/training_arrays.py", line 196, in fit_loop
+    outs = fit_function(ins_batch)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/keras/backend.py", line 3740, in __call__
+    outputs = self._graph_fn(*converted_inputs)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1081, in __call__
+    return self._call_impl(args, kwargs)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1121, in _call_impl
+    return self._call_flat(args, self.captured_inputs, cancellation_manager)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1224, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 511, in call
+    ctx=ctx)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/execute.py", line 61, in quick_execute
+    num_outputs)
+KeyboardInterrupt
+(tensorflow) Evangelie:panotti evangelie$ python experiments.py
+['/Users/evangelie/Documents/GitHub/panotti', '/miniconda3/envs/tensorflow/lib/python37.zip', '/miniconda3/envs/tensorflow/lib/python3.7', '/miniconda3/envs/tensorflow/lib/python3.7/lib-dynload', '/Users/evangelie/.local/lib/python3.7/site-packages', '/miniconda3/envs/tensorflow/lib/python3.7/site-packages']
+3.7.5 (default, Oct 25 2019, 10:52:18) 
+[Clang 4.0.1 (tags/RELEASE_401/final)]
+Using TensorFlow backend.
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2120
+total files =  2126 , going to load total_load =  2120
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1073_TAI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1033_IOM_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1079_TIE_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1077_TIE_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1033_TIE_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1032_IWL_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2120, 96, 420, 1) , channels =  1
+2019-11-24 20:19:50.913736: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2019-11-24 20:19:50.914018: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_1 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_2 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_3 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_4 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_5 (Activation)    (None, 128)               0         
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2120 samples, validate on 2120 samples
+Epoch 1/25
+2120/2120 [==============================] - 259s 122ms/step - loss: 2.0738 - accuracy: 0.3038 - val_loss: 1.7911 - val_accuracy: 0.3542
+
+Epoch 00001: saving model to batchsize20weights.hdf5
+Epoch 2/25
+2120/2120 [==============================] - 253s 120ms/step - loss: 1.6207 - accuracy: 0.3618 - val_loss: 1.4364 - val_accuracy: 0.4594
+
+Epoch 00002: saving model to batchsize20weights.hdf5
+Epoch 3/25
+2120/2120 [==============================] - 253s 120ms/step - loss: 1.5365 - accuracy: 0.3835 - val_loss: 1.4357 - val_accuracy: 0.4396
+
+Epoch 00003: saving model to batchsize20weights.hdf5
+Epoch 4/25
+2120/2120 [==============================] - 254s 120ms/step - loss: 1.5054 - accuracy: 0.4085 - val_loss: 1.6370 - val_accuracy: 0.4533
+
+Epoch 00004: saving model to batchsize20weights.hdf5
+Epoch 5/25
+2120/2120 [==============================] - 265s 125ms/step - loss: 1.4491 - accuracy: 0.4193 - val_loss: 1.5402 - val_accuracy: 0.4906
+
+Epoch 00005: saving model to batchsize20weights.hdf5
+Epoch 6/25
+2120/2120 [==============================] - 255s 120ms/step - loss: 1.4044 - accuracy: 0.4509 - val_loss: 1.1497 - val_accuracy: 0.5608
+
+Epoch 00006: saving model to batchsize20weights.hdf5
+Epoch 7/25
+2120/2120 [==============================] - 252s 119ms/step - loss: 1.3643 - accuracy: 0.4613 - val_loss: 1.0974 - val_accuracy: 0.5778
+
+Epoch 00007: saving model to batchsize20weights.hdf5
+Epoch 8/25
+2120/2120 [==============================] - 251s 118ms/step - loss: 1.3027 - accuracy: 0.4962 - val_loss: 1.1342 - val_accuracy: 0.5599
+
+Epoch 00008: saving model to batchsize20weights.hdf5
+Epoch 9/25
+2120/2120 [==============================] - 250s 118ms/step - loss: 1.2720 - accuracy: 0.5042 - val_loss: 0.9860 - val_accuracy: 0.6274
+
+Epoch 00009: saving model to batchsize20weights.hdf5
+Epoch 10/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.2375 - accuracy: 0.5222 - val_loss: 0.8822 - val_accuracy: 0.6557
+
+Epoch 00010: saving model to batchsize20weights.hdf5
+Epoch 11/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.1772 - accuracy: 0.5491 - val_loss: 0.9205 - val_accuracy: 0.6561
+
+Epoch 00011: saving model to batchsize20weights.hdf5
+Epoch 12/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.1277 - accuracy: 0.5693 - val_loss: 0.8769 - val_accuracy: 0.6608
+
+Epoch 00012: saving model to batchsize20weights.hdf5
+Epoch 13/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.0470 - accuracy: 0.5868 - val_loss: 0.7752 - val_accuracy: 0.6991
+
+Epoch 00013: saving model to batchsize20weights.hdf5
+Epoch 14/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 1.0162 - accuracy: 0.6104 - val_loss: 0.7911 - val_accuracy: 0.7042
+
+Epoch 00014: saving model to batchsize20weights.hdf5
+Epoch 15/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.9347 - accuracy: 0.6392 - val_loss: 0.6993 - val_accuracy: 0.7340
+
+Epoch 00015: saving model to batchsize20weights.hdf5
+Epoch 16/25
+2120/2120 [==============================] - 248s 117ms/step - loss: 0.8994 - accuracy: 0.6533 - val_loss: 0.5925 - val_accuracy: 0.7901
+
+Epoch 00016: saving model to batchsize20weights.hdf5
+Epoch 17/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.8634 - accuracy: 0.6693 - val_loss: 0.7927 - val_accuracy: 0.7118
+
+Epoch 00017: saving model to batchsize20weights.hdf5
+Epoch 18/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.8353 - accuracy: 0.6788 - val_loss: 0.4485 - val_accuracy: 0.8575
+
+Epoch 00018: saving model to batchsize20weights.hdf5
+Epoch 19/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.7704 - accuracy: 0.7024 - val_loss: 0.4462 - val_accuracy: 0.8458
+
+Epoch 00019: saving model to batchsize20weights.hdf5
+Epoch 20/25
+2120/2120 [==============================] - 261s 123ms/step - loss: 0.7274 - accuracy: 0.7222 - val_loss: 0.3521 - val_accuracy: 0.8868
+
+Epoch 00020: saving model to batchsize20weights.hdf5
+Epoch 21/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.6824 - accuracy: 0.7500 - val_loss: 0.3821 - val_accuracy: 0.9000
+
+Epoch 00021: saving model to batchsize20weights.hdf5
+Epoch 22/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.6618 - accuracy: 0.7519 - val_loss: 0.2939 - val_accuracy: 0.9175
+
+Epoch 00022: saving model to batchsize20weights.hdf5
+Epoch 23/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.6244 - accuracy: 0.7764 - val_loss: 0.3021 - val_accuracy: 0.9142
+
+Epoch 00023: saving model to batchsize20weights.hdf5
+Epoch 24/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.6025 - accuracy: 0.7745 - val_loss: 0.2586 - val_accuracy: 0.9269
+
+Epoch 00024: saving model to batchsize20weights.hdf5
+Epoch 25/25
+2120/2120 [==============================] - 249s 117ms/step - loss: 0.5585 - accuracy: 0.7981 - val_loss: 0.2584 - val_accuracy: 0.9377
+
+Epoch 00025: saving model to batchsize20weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1040_TAI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1019_TAI_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1058_ITS_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1036_TSI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1056_ITH_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1049_ITS_SAD_XX.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.8607065283266224
+Dev set accuracy: 0.4135338366031647
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2120
+total files =  2126 , going to load total_load =  2120
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1049_TSI_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1051_IWW_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1009_IWL_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1040_DFA_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1048_WSI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1038_MTI_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2120, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_2"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_5 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_6 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_6 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_7 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_5 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_7 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_8 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_6 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_8 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_9 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_7 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_10 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_8 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2120 samples, validate on 2120 samples
+Epoch 1/25
+2120/2120 [==============================] - 248s 117ms/step - loss: 2.1119 - accuracy: 0.3052 - val_loss: 1.6840 - val_accuracy: 0.3160
+
+Epoch 00001: saving model to batchsize40weights.hdf5
+Epoch 2/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 1.6151 - accuracy: 0.3585 - val_loss: 1.4496 - val_accuracy: 0.3811
+
+Epoch 00002: saving model to batchsize40weights.hdf5
+Epoch 3/25
+2120/2120 [==============================] - 243s 115ms/step - loss: 1.5361 - accuracy: 0.3887 - val_loss: 1.5996 - val_accuracy: 0.3358
+
+Epoch 00003: saving model to batchsize40weights.hdf5
+Epoch 4/25
+2120/2120 [==============================] - 243s 115ms/step - loss: 1.4922 - accuracy: 0.3929 - val_loss: 1.2710 - val_accuracy: 0.4995
+
+Epoch 00004: saving model to batchsize40weights.hdf5
+Epoch 5/25
+2120/2120 [==============================] - 243s 115ms/step - loss: 1.5051 - accuracy: 0.4175 - val_loss: 1.2081 - val_accuracy: 0.5368
+
+Epoch 00005: saving model to batchsize40weights.hdf5
+Epoch 6/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 1.4445 - accuracy: 0.4330 - val_loss: 1.2444 - val_accuracy: 0.4948
+
+Epoch 00006: saving model to batchsize40weights.hdf5
+Epoch 7/25
+2120/2120 [==============================] - 243s 115ms/step - loss: 1.3717 - accuracy: 0.4500 - val_loss: 1.1028 - val_accuracy: 0.5929
+
+Epoch 00007: saving model to batchsize40weights.hdf5
+Epoch 8/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 1.3359 - accuracy: 0.4712 - val_loss: 1.1117 - val_accuracy: 0.5542
+
+Epoch 00008: saving model to batchsize40weights.hdf5
+Epoch 9/25
+2120/2120 [==============================] - 243s 115ms/step - loss: 1.3111 - accuracy: 0.4920 - val_loss: 1.0502 - val_accuracy: 0.5901
+
+Epoch 00009: saving model to batchsize40weights.hdf5
+Epoch 10/25
+2120/2120 [==============================] - 256s 121ms/step - loss: 1.2255 - accuracy: 0.5245 - val_loss: 1.0468 - val_accuracy: 0.5934
+
+Epoch 00010: saving model to batchsize40weights.hdf5
+Epoch 11/25
+2120/2120 [==============================] - 243s 115ms/step - loss: 1.2158 - accuracy: 0.5330 - val_loss: 0.9560 - val_accuracy: 0.6524
+
+Epoch 00011: saving model to batchsize40weights.hdf5
+Epoch 12/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 1.1425 - accuracy: 0.5675 - val_loss: 0.8901 - val_accuracy: 0.6627
+
+Epoch 00012: saving model to batchsize40weights.hdf5
+Epoch 13/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 1.1389 - accuracy: 0.5561 - val_loss: 0.9132 - val_accuracy: 0.6566
+
+Epoch 00013: saving model to batchsize40weights.hdf5
+Epoch 14/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 1.1002 - accuracy: 0.5830 - val_loss: 0.8944 - val_accuracy: 0.6660
+
+Epoch 00014: saving model to batchsize40weights.hdf5
+Epoch 15/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 1.0463 - accuracy: 0.6028 - val_loss: 0.8563 - val_accuracy: 0.6778
+
+Epoch 00015: saving model to batchsize40weights.hdf5
+Epoch 16/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 0.9521 - accuracy: 0.6335 - val_loss: 0.6465 - val_accuracy: 0.7825
+
+Epoch 00016: saving model to batchsize40weights.hdf5
+Epoch 17/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 0.9522 - accuracy: 0.6387 - val_loss: 0.7028 - val_accuracy: 0.7292
+
+Epoch 00017: saving model to batchsize40weights.hdf5
+Epoch 18/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 0.8828 - accuracy: 0.6608 - val_loss: 0.6381 - val_accuracy: 0.7764
+
+Epoch 00018: saving model to batchsize40weights.hdf5
+Epoch 19/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 0.8475 - accuracy: 0.6887 - val_loss: 0.6212 - val_accuracy: 0.7693
+
+Epoch 00019: saving model to batchsize40weights.hdf5
+Epoch 20/25
+2120/2120 [==============================] - 243s 115ms/step - loss: 0.7785 - accuracy: 0.6986 - val_loss: 0.4723 - val_accuracy: 0.8623
+
+Epoch 00020: saving model to batchsize40weights.hdf5
+Epoch 21/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 0.7703 - accuracy: 0.7047 - val_loss: 0.4493 - val_accuracy: 0.8575
+
+Epoch 00021: saving model to batchsize40weights.hdf5
+Epoch 22/25
+2120/2120 [==============================] - 246s 116ms/step - loss: 0.7150 - accuracy: 0.7363 - val_loss: 0.3741 - val_accuracy: 0.9009
+
+Epoch 00022: saving model to batchsize40weights.hdf5
+Epoch 23/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 0.6898 - accuracy: 0.7406 - val_loss: 0.4010 - val_accuracy: 0.8774
+
+Epoch 00023: saving model to batchsize40weights.hdf5
+Epoch 24/25
+2120/2120 [==============================] - 244s 115ms/step - loss: 0.6310 - accuracy: 0.7750 - val_loss: 0.2934 - val_accuracy: 0.9302
+
+Epoch 00024: saving model to batchsize40weights.hdf5
+Epoch 25/25
+2120/2120 [==============================] - 256s 121ms/step - loss: 0.5951 - accuracy: 0.7868 - val_loss: 0.2539 - val_accuracy: 0.9420
+
+Epoch 00025: saving model to batchsize40weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1064_IWW_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1024_TSI_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1038_IEO_FEA_HI.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1061_IEO_HAP_HI.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1043_IWW_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1022_IEO_SAD_MD.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.8912597903631683
+Dev set accuracy: 0.44736841320991516
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2080
+total files =  2126 , going to load total_load =  2080
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1035_TIE_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1053_DFA_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1029_IOM_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1037_IWL_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1014_DFA_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 301/373: Preprocessed/Train/SAD/1050_IWL_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2080, 96, 420, 1) , channels =  1
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_3"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_9 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_11 (Activation)   (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_7 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_10 (MaxPooling (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_12 (Activation)   (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_9 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_8 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_11 (MaxPooling (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_13 (Activation)   (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_10 (Dropout)         (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_9 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_12 (MaxPooling (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_14 (Activation)   (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_11 (Dropout)         (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_3 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_15 (Activation)   (None, 128)               0         
+_________________________________________________________________
+dropout_12 (Dropout)         (None, 128)               0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Train on 2080 samples, validate on 2080 samples
+Epoch 1/25
+2080/2080 [==============================] - 242s 116ms/step - loss: 2.6288 - accuracy: 0.2942 - val_loss: 1.7274 - val_accuracy: 0.2639
+
+Epoch 00001: saving model to batchsize80weights.hdf5
+Epoch 2/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.6171 - accuracy: 0.3553 - val_loss: 1.5776 - val_accuracy: 0.3673
+
+Epoch 00002: saving model to batchsize80weights.hdf5
+Epoch 3/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5608 - accuracy: 0.3654 - val_loss: 1.5404 - val_accuracy: 0.4187
+
+Epoch 00003: saving model to batchsize80weights.hdf5
+Epoch 4/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.5686 - accuracy: 0.3659 - val_loss: 1.3904 - val_accuracy: 0.4322
+
+Epoch 00004: saving model to batchsize80weights.hdf5
+Epoch 5/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4969 - accuracy: 0.4029 - val_loss: 1.5673 - val_accuracy: 0.3784
+
+Epoch 00005: saving model to batchsize80weights.hdf5
+Epoch 6/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4706 - accuracy: 0.4096 - val_loss: 1.3687 - val_accuracy: 0.4192
+
+Epoch 00006: saving model to batchsize80weights.hdf5
+Epoch 7/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4426 - accuracy: 0.4351 - val_loss: 1.5592 - val_accuracy: 0.4577
+
+Epoch 00007: saving model to batchsize80weights.hdf5
+Epoch 8/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.4110 - accuracy: 0.4519 - val_loss: 1.5157 - val_accuracy: 0.4370
+
+Epoch 00008: saving model to batchsize80weights.hdf5
+Epoch 9/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3603 - accuracy: 0.4587 - val_loss: 1.2098 - val_accuracy: 0.5077
+
+Epoch 00009: saving model to batchsize80weights.hdf5
+Epoch 10/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3680 - accuracy: 0.4601 - val_loss: 1.2272 - val_accuracy: 0.5019
+
+Epoch 00010: saving model to batchsize80weights.hdf5
+Epoch 11/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.3101 - accuracy: 0.4803 - val_loss: 1.2138 - val_accuracy: 0.4885
+
+Epoch 00011: saving model to batchsize80weights.hdf5
+Epoch 12/25
+2080/2080 [==============================] - 240s 115ms/step - loss: 1.3028 - accuracy: 0.4822 - val_loss: 1.4235 - val_accuracy: 0.4635
+
+Epoch 00012: saving model to batchsize80weights.hdf5
+Epoch 13/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.2747 - accuracy: 0.4971 - val_loss: 0.9814 - val_accuracy: 0.6409
+
+Epoch 00013: saving model to batchsize80weights.hdf5
+Epoch 14/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.2078 - accuracy: 0.5298 - val_loss: 0.9601 - val_accuracy: 0.6428
+
+Epoch 00014: saving model to batchsize80weights.hdf5
+Epoch 15/25
+2080/2080 [==============================] - 247s 119ms/step - loss: 1.1925 - accuracy: 0.5298 - val_loss: 1.0195 - val_accuracy: 0.5962
+
+Epoch 00015: saving model to batchsize80weights.hdf5
+Epoch 16/25
+2080/2080 [==============================] - 241s 116ms/step - loss: 1.2058 - accuracy: 0.5317 - val_loss: 1.1224 - val_accuracy: 0.5154
+
+Epoch 00016: saving model to batchsize80weights.hdf5
+Epoch 17/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.1396 - accuracy: 0.5577 - val_loss: 0.8807 - val_accuracy: 0.6697
+
+Epoch 00017: saving model to batchsize80weights.hdf5
+Epoch 18/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.1306 - accuracy: 0.5534 - val_loss: 0.8606 - val_accuracy: 0.6702
+
+Epoch 00018: saving model to batchsize80weights.hdf5
+Epoch 19/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0883 - accuracy: 0.5813 - val_loss: 0.8071 - val_accuracy: 0.7144
+
+Epoch 00019: saving model to batchsize80weights.hdf5
+Epoch 20/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0319 - accuracy: 0.6043 - val_loss: 0.7842 - val_accuracy: 0.7385
+
+Epoch 00020: saving model to batchsize80weights.hdf5
+Epoch 21/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 1.0020 - accuracy: 0.6212 - val_loss: 0.8609 - val_accuracy: 0.7053
+
+Epoch 00021: saving model to batchsize80weights.hdf5
+Epoch 22/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9728 - accuracy: 0.6269 - val_loss: 0.7671 - val_accuracy: 0.7072
+
+Epoch 00022: saving model to batchsize80weights.hdf5
+Epoch 23/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9453 - accuracy: 0.6409 - val_loss: 0.7401 - val_accuracy: 0.7274
+
+Epoch 00023: saving model to batchsize80weights.hdf5
+Epoch 24/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.9342 - accuracy: 0.6519 - val_loss: 0.6188 - val_accuracy: 0.7861
+
+Epoch 00024: saving model to batchsize80weights.hdf5
+Epoch 25/25
+2080/2080 [==============================] - 237s 114ms/step - loss: 0.8551 - accuracy: 0.6769 - val_loss: 0.6145 - val_accuracy: 0.7760
+
+Epoch 00025: saving model to batchsize80weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1079_IEO_ANG_MD.wav.npz                  
+ Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1048_MTI_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1044_TSI_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1066_MTI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1073_WSI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1077_MTI_SAD_XX.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.589440597627396
+Dev set accuracy: 0.5075187683105469
+(tensorflow) Evangelie:panotti evangelie$ 
