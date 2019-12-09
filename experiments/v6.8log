@@ -1,0 +1,241 @@
+Last login: Sun Dec  8 19:52:33 on ttys000
+(base) DNa1c06a0:~ evangelie$ cd ~/Documents/GitHub/panotti/
+(base) DNa1c06a0:panotti evangelie$ source activate tensorflow
+(tensorflow) DNa1c06a0:panotti evangelie$ python experiments.py
+['/Users/evangelie/Documents/GitHub/panotti', '/miniconda3/envs/tensorflow/lib/python37.zip', '/miniconda3/envs/tensorflow/lib/python3.7', '/miniconda3/envs/tensorflow/lib/python3.7/lib-dynload', '/Users/evangelie/.local/lib/python3.7/site-packages', '/miniconda3/envs/tensorflow/lib/python3.7/site-packages']
+3.7.5 (default, Oct 25 2019, 10:52:18) 
+[Clang 4.0.1 (tags/RELEASE_401/final)]
+Using TensorFlow backend.
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2048
+total files =  2126 , going to load total_load =  2048
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 1/345: Preprocessed/Train/ANG/1069_ITH_ANG_XX.wa Loading class 1/6: 'ANG', File 101/345: Preprocessed/Train/ANG/1014_IWW_ANG_XX. Loading class 1/6: 'ANG', File 201/345: Preprocessed/Train/ANG/1028_ITH_ANG_XX. Loading class 1/6: 'ANG', File 301/345: Preprocessed/Train/ANG/1053_IWW_ANG_XX. Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1006_IEO_ANG_MD.wav.npz                  
+ Loading class 2/6: 'DIS', File 1/374: Preprocessed/Train/DIS/1002_IWL_DIS_XX.wa Loading class 2/6: 'DIS', File 101/374: Preprocessed/Train/DIS/1026_IEO_DIS_HI. Loading class 2/6: 'DIS', File 201/374: Preprocessed/Train/DIS/1075_IOM_DIS_XX. Loading class 2/6: 'DIS', File 301/374: Preprocessed/Train/DIS/1061_DFA_DIS_XX. Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1046_ITH_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 1/343: Preprocessed/Train/FEA/1030_DFA_FEA_XX.wa Loading class 3/6: 'FEA', File 101/343: Preprocessed/Train/FEA/1050_IEO_FEA_LO. Loading class 3/6: 'FEA', File 201/343: Preprocessed/Train/FEA/1079_TIE_FEA_XX. Loading class 3/6: 'FEA', File 301/343: Preprocessed/Train/FEA/1068_IOM_FEA_XX. Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1067_TSI_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 1/363: Preprocessed/Train/HAP/1083_IEO_HAP_HI.wa Loading class 4/6: 'HAP', File 101/363: Preprocessed/Train/HAP/1040_IEO_HAP_MD. Loading class 4/6: 'HAP', File 201/363: Preprocessed/Train/HAP/1026_IWL_HAP_XX. Loading class 4/6: 'HAP', File 301/363: Preprocessed/Train/HAP/1041_DFA_HAP_XX. Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1077_IEO_HAP_LO.wav.npz                  
+ Loading class 5/6: 'NEU', File 1/328: Preprocessed/Train/NEU/1043_IOM_NEU_XX.wa Loading class 5/6: 'NEU', File 101/328: Preprocessed/Train/NEU/1039_IEO_NEU_XX. Loading class 5/6: 'NEU', File 201/328: Preprocessed/Train/NEU/1072_TIE_NEU_XX. Loading class 5/6: 'NEU', File 301/328: Preprocessed/Train/NEU/1018_TIE_NEU_XX. Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1037_IWL_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 1/373: Preprocessed/Train/SAD/1039_IWL_SAD_XX.wa Loading class 6/6: 'SAD', File 101/373: Preprocessed/Train/SAD/1018_IWL_SAD_XX. Loading class 6/6: 'SAD', File 201/373: Preprocessed/Train/SAD/1027_ITH_SAD_XX.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2048, 96, 420, 1) , channels =  1
+2019-12-08 20:49:33.130793: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2019-12-08 20:49:33.131145: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+WARNING:tensorflow:Large dropout rate: 0.6 (>0.5). In TensorFlow 2.x, dropout() uses dropout rate instead of keep_prob. Please ensure that this is intended.
+Looking for previous weights...
+No weights file detected, so starting from scratch.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_1 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_2 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_3 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_4 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_5 (Activation)    (None, 128)               0         
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Epoch 1/10
+^CTraceback (most recent call last):
+  File "experiments.py", line 161, in <module>
+    morecontinuerundropoutexperiment(6)
+  File "experiments.py", line 122, in morecontinuerundropoutexperiment
+    train_network(weights_file_in = inpath, weights_file_out = outpath, epochs=epochnum, batch_size=128, val_split=0, convdropout=c, densdropout=d)    
+  File "experiments.py", line 63, in train_network
+    verbose=1, callbacks=[checkpointer])#v5 commented out validation_split=val_split, validation_data=(X_train, Y_train))
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/training.py", line 1239, in fit
+    validation_freq=validation_freq)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/training_arrays.py", line 196, in fit_loop
+    outs = fit_function(ins_batch)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/keras/backend.py", line 3740, in __call__
+    outputs = self._graph_fn(*converted_inputs)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1081, in __call__
+    return self._call_impl(args, kwargs)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1121, in _call_impl
+    return self._call_flat(args, self.captured_inputs, cancellation_manager)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 1224, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/function.py", line 511, in call
+    ctx=ctx)
+  File "/miniconda3/envs/tensorflow/lib/python3.7/site-packages/tensorflow_core/python/eager/execute.py", line 61, in quick_execute
+    num_outputs)
+KeyboardInterrupt
+(tensorflow) DNa1c06a0:panotti evangelie$ python experiments.py
+['/Users/evangelie/Documents/GitHub/panotti', '/miniconda3/envs/tensorflow/lib/python37.zip', '/miniconda3/envs/tensorflow/lib/python3.7', '/miniconda3/envs/tensorflow/lib/python3.7/lib-dynload', '/Users/evangelie/.local/lib/python3.7/site-packages', '/miniconda3/envs/tensorflow/lib/python3.7/site-packages']
+3.7.5 (default, Oct 25 2019, 10:52:18) 
+[Clang 4.0.1 (tags/RELEASE_401/final)]
+Using TensorFlow backend.
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  2126 , going to load total_load =  2048
+total files =  2126 , going to load total_load =  2048
+   get_sample_dimensions: 1068_DFA_ANG_XX.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 1/345: Preprocessed/Train/ANG/1009_WSI_ANG_XX.wa Loading class 1/6: 'ANG', File 101/345: Preprocessed/Train/ANG/1007_TAI_ANG_XX. Loading class 1/6: 'ANG', File 201/345: Preprocessed/Train/ANG/1047_IEO_ANG_HI. Loading class 1/6: 'ANG', File 301/345: Preprocessed/Train/ANG/1090_DFA_ANG_XX. Loading class 1/6: 'ANG', File 345/345: Preprocessed/Train/ANG/1021_IWL_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 1/374: Preprocessed/Train/DIS/1014_TAI_DIS_XX.wa Loading class 2/6: 'DIS', File 101/374: Preprocessed/Train/DIS/1076_IOM_DIS_XX. Loading class 2/6: 'DIS', File 201/374: Preprocessed/Train/DIS/1003_MTI_DIS_XX. Loading class 2/6: 'DIS', File 301/374: Preprocessed/Train/DIS/1075_IOM_DIS_XX. Loading class 2/6: 'DIS', File 374/374: Preprocessed/Train/DIS/1086_DFA_DIS_XX.wav.npz                  
+ Loading class 3/6: 'FEA', File 1/343: Preprocessed/Train/FEA/1009_IWL_FEA_XX.wa Loading class 3/6: 'FEA', File 101/343: Preprocessed/Train/FEA/1030_DFA_FEA_XX. Loading class 3/6: 'FEA', File 201/343: Preprocessed/Train/FEA/1051_ITH_FEA_XX. Loading class 3/6: 'FEA', File 301/343: Preprocessed/Train/FEA/1062_TSI_FEA_XX. Loading class 3/6: 'FEA', File 343/343: Preprocessed/Train/FEA/1088_TIE_FEA_XX.wav.npz                  
+ Loading class 4/6: 'HAP', File 1/363: Preprocessed/Train/HAP/1081_MTI_HAP_XX.wa Loading class 4/6: 'HAP', File 101/363: Preprocessed/Train/HAP/1079_WSI_HAP_XX. Loading class 4/6: 'HAP', File 201/363: Preprocessed/Train/HAP/1076_IWW_HAP_XX. Loading class 4/6: 'HAP', File 301/363: Preprocessed/Train/HAP/1071_WSI_HAP_XX. Loading class 4/6: 'HAP', File 363/363: Preprocessed/Train/HAP/1071_MTI_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 1/328: Preprocessed/Train/NEU/1067_TIE_NEU_XX.wa Loading class 5/6: 'NEU', File 101/328: Preprocessed/Train/NEU/1025_IWL_NEU_XX. Loading class 5/6: 'NEU', File 201/328: Preprocessed/Train/NEU/1050_MTI_NEU_XX. Loading class 5/6: 'NEU', File 301/328: Preprocessed/Train/NEU/1070_IOM_NEU_XX. Loading class 5/6: 'NEU', File 328/328: Preprocessed/Train/NEU/1022_WSI_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 1/373: Preprocessed/Train/SAD/1013_IEO_SAD_LO.wa Loading class 6/6: 'SAD', File 101/373: Preprocessed/Train/SAD/1089_IWW_SAD_XX. Loading class 6/6: 'SAD', File 201/373: Preprocessed/Train/SAD/1075_IEO_SAD_MD.wav.npz                  
+ MyCNN_Keras2: X_shape =  (2048, 96, 420, 1) , channels =  1
+2019-12-08 20:50:38.013809: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2019-12-08 20:50:38.014134: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+WARNING:tensorflow:Large dropout rate: 0.7 (>0.5). In TensorFlow 2.x, dropout() uses dropout rate instead of keep_prob. Please ensure that this is intended.
+Looking for previous weights...
+Weights file detected. Loading from  60.5_convdropout0.5densedropout0.7weights.hdf5
+WARNING:tensorflow:Large dropout rate: 0.7 (>0.5). In TensorFlow 2.x, dropout() uses dropout rate instead of keep_prob. Please ensure that this is intended.
+ Available GPUs =  [] , count =  0
+Summary of serial model (duplicated across 0 GPUs):
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+Input (Conv2D)               (None, 96, 420, 32)       320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 48, 210, 32)       0         
+_________________________________________________________________
+activation_1 (Activation)    (None, 48, 210, 32)       0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 48, 210, 32)       128       
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 210, 32)       9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 24, 105, 32)       0         
+_________________________________________________________________
+activation_2 (Activation)    (None, 24, 105, 32)       0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 24, 105, 32)       0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 24, 105, 32)       9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 12, 52, 32)        0         
+_________________________________________________________________
+activation_3 (Activation)    (None, 12, 52, 32)        0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 12, 52, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 12, 52, 32)        9248      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 6, 26, 32)         0         
+_________________________________________________________________
+activation_4 (Activation)    (None, 6, 26, 32)         0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 6, 26, 32)         0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4992)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               639104    
+_________________________________________________________________
+activation_5 (Activation)    (None, 128)               0         
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 6)                 774       
+_________________________________________________________________
+Output (Activation)          (None, 6)                 0         
+=================================================================
+Total params: 668,070
+Trainable params: 668,006
+Non-trainable params: 64
+_________________________________________________________________
+Epoch 1/10
+2048/2048 [==============================] - 198s 97ms/step - loss: 1.1910 - accuracy: 0.5410
+
+Epoch 00001: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 2/10
+2048/2048 [==============================] - 184s 90ms/step - loss: 1.1872 - accuracy: 0.5498
+
+Epoch 00002: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 3/10
+2048/2048 [==============================] - 186s 91ms/step - loss: 1.1408 - accuracy: 0.5581
+
+Epoch 00003: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 4/10
+2048/2048 [==============================] - 182s 89ms/step - loss: 1.1903 - accuracy: 0.5347
+
+Epoch 00004: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 5/10
+2048/2048 [==============================] - 180s 88ms/step - loss: 1.1442 - accuracy: 0.5684
+
+Epoch 00005: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 6/10
+2048/2048 [==============================] - 188s 92ms/step - loss: 1.1459 - accuracy: 0.5542
+
+Epoch 00006: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 7/10
+2048/2048 [==============================] - 177s 86ms/step - loss: 1.1672 - accuracy: 0.5610
+
+Epoch 00007: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 8/10
+2048/2048 [==============================] - 176s 86ms/step - loss: 1.1581 - accuracy: 0.5552
+
+Epoch 00008: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 9/10
+2048/2048 [==============================] - 180s 88ms/step - loss: 1.1408 - accuracy: 0.5659
+
+Epoch 00009: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+Epoch 10/10
+2048/2048 [==============================] - 170s 83ms/step - loss: 1.1793 - accuracy: 0.5503
+
+Epoch 00010: saving model to 60.8_convdropout0.5densedropout0.7weights.hdf5
+class_names =  ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
+       total files =  266 , going to load total_load =  266
+total files =  266 , going to load total_load =  266
+   get_sample_dimensions: 1075_IEO_ANG_HI.wav.npz: melgram.shape =  (1, 96, 420, 1)
+ melgram dimensions:  (1, 96, 420, 1)
+
+ Loading class 1/6: 'ANG', File 1/44: Preprocessed/Train/../Dev/ANG/1019_DFA_ANG Loading class 1/6: 'ANG', File 44/44: Preprocessed/Train/../Dev/ANG/1066_IWL_ANG_XX.wav.npz                  
+ Loading class 2/6: 'DIS', File 1/42: Preprocessed/Train/../Dev/DIS/1030_WSI_DIS Loading class 2/6: 'DIS', File 42/42: Preprocessed/Train/../Dev/DIS/1081_IEO_DIS_MD.wav.npz                  
+ Loading class 3/6: 'FEA', File 1/62: Preprocessed/Train/../Dev/FEA/1069_TAI_FEA Loading class 3/6: 'FEA', File 62/62: Preprocessed/Train/../Dev/FEA/1038_IEO_FEA_HI.wav.npz                  
+ Loading class 4/6: 'HAP', File 1/47: Preprocessed/Train/../Dev/HAP/1008_DFA_HAP Loading class 4/6: 'HAP', File 47/47: Preprocessed/Train/../Dev/HAP/1058_IWL_HAP_XX.wav.npz                  
+ Loading class 5/6: 'NEU', File 1/31: Preprocessed/Train/../Dev/NEU/1013_IWL_NEU Loading class 5/6: 'NEU', File 31/31: Preprocessed/Train/../Dev/NEU/1023_DFA_NEU_XX.wav.npz                  
+ Loading class 6/6: 'SAD', File 1/40: Preprocessed/Train/../Dev/SAD/1071_IWL_SAD Loading class 6/6: 'SAD', File 40/40: Preprocessed/Train/../Dev/SAD/1031_IEO_SAD_HI.wav.npz                  
+adadelta  gives the following results:
+Dev set loss: 1.2782718776760245
+Dev set accuracy: 0.5
+(tensorflow) DNa1c06a0:panotti evangelie$ 

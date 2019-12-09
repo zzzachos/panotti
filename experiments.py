@@ -60,7 +60,7 @@ def train_network(weights_file_in="weights.hdf5", weights_file_out = "weights.hd
               verbose=1, callbacks=[checkpointer], validation_split=val_split,validation_data=(X_val, Y_val))
     else:
         model.fit(X_train, Y_train, batch_size=batch_size, epochs=epochs, shuffle=True,
-              verbose=1, callbacks=[checkpointer], validation_split=val_split, validation_data=(X_train, Y_train))
+              verbose=1, callbacks=[checkpointer])#v5 commented out validation_split=val_split, validation_data=(X_train, Y_train))
     #else:
        # model.fit(X_train, Y_train, batch_size=batch_size, epochs=epochs, shuffle=True,
              # verbose=1, callbacks=[checkpointer], #validation_split=val_split)
@@ -104,7 +104,35 @@ def newrundropoutexperiment(version, clist, dlist, epochnum): #this is designed 
         for d in dlist:
             path = str(version)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
             train_network(weights_file_out = path, epochs=epochnum, batch_size=64, val_split=0, convdropout=c, densdropout=d)
-        
+
+def continuerundropoutexperiment(version, clist, dlist, epochnum): #this is designed to have no cross-validation
+    for c in clist:
+        for d in dlist:
+            inpath = str(version)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            outpath = str(version)+str(.5)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            path = str(version)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            train_network(weights_file_in = inpath, weights_file_out = outpath, epochs=epochnum, batch_size=128, val_split=0, convdropout=c, densdropout=d)        
+
+def morecontinuerundropoutexperiment(version, clist=[0.5], dlist=[0.7], epochnum=10): #this is designed to have no cross-validation
+    for c in clist:
+        for d in dlist:
+            inpath = str(version)+str(.5)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            outpath = str(version)+str(.8)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            path = str(version)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            train_network(weights_file_in = inpath, weights_file_out = outpath, epochs=epochnum, batch_size=128, val_split=0, convdropout=c, densdropout=d)    
+
+def newnewrundropoutexperiment(version, clist, dlist, epochnum, batchs): #this is designed to have no cross-validation
+    for c in clist:
+        for d in dlist:
+            inpath = str(version)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            outpath = str(version)+"_convdropout"+str(c) + "densedropout"+str(d) +"weights.hdf5"
+            train_network(weights_file_out = outpath, epochs=epochnum, batch_size=batchs, val_split=0, convdropout=c, densdropout=d)
+
+def newrunoptimizerexperiment(version, list, rates, directory, epochnum, batchs):
+    for l in list:
+        for r in rates:
+            path = str(version)+l + str(r) + "weights.hdf5"
+            train_network( weights_file_out = path, optimizer=l, learningrate = r,epochs=epochnum, batch_size=batchs, val_split=0, convdropout=0.4, densdropout=0.6)
 
 if __name__ == '__main__':
 #The following two experiments were run with cross-validation as originally written.
@@ -122,7 +150,16 @@ if __name__ == '__main__':
 #Now we run dropout rate expreiment without any cross-validation and with best batch size... the last experiment had a real overfitting problem 
     #newrundropoutexperiment(2,[0.3,0.5], [0.2,0.4], 25)
     #newrundropoutexperiment(3,[0.3,0.5], [0.2,0.4], 50)
-    newrundropoutexperiment(4,[0.5,0.3], [0.4,0.2], 40)
+    #newrundropoutexperiment(4,[0.5,0.3], [0.4,0.2], 40)
+    #newrundropoutexperiment(5,[0.5,0.7], [0.6, 0.4,0.8],25)
+    #do the previous one for ten more epochs each!
+    #continuerundropoutexperiment(5,[0.5,0.7], [0.6, 0.4,0.8],10)#batch size 64
+    #newnewrundropoutexperiment(6,[0.5,0.6,0.4], [0.6, 0.7], 30,128)
+    #continuerundropoutexperiment(6,[0.5], [0.6,0.7],10)#batch size 128
+    #newnewrundropoutexperiment(7,[0.4,0.3],[0.5],30,128)
+    #newrunoptimizerexperiment(8, ["Adam"], [0.001, 0.0001],"", 40, 128)
+    morecontinuerundropoutexperiment(6)
+    
 
 
 #need to add evaluate network parts

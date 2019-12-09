@@ -57,7 +57,8 @@ def count_mistakes(y_scores,Y_test,paths_test,class_names):
     return
 
 
-def eval_network(weights_file="weights.hdf5", classpath="Preproc/Test/", batch_size=40):
+
+def eval_network(weights_file="60.5_convdropout0.5densedropout0.7weights.hdf5", classpath="Preprocessed/Dev/", batch_size=40):
     np.random.seed(1)
 
     # get the data
@@ -170,7 +171,7 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description="evaluates network on testing dataset")
     parser.add_argument('-w', '--weights', #nargs=1, type=argparse.FileType('r'),
-        help='weights file in hdf5 format', default="weights.hdf5")
+        help='weights file in hdf5 format', default="60.5_convdropout0.5densedropout0.7weights.hdf5")
     parser.add_argument('-c', '--classpath', #type=argparse.string,
         help='dev dataset directory with list of classes', default="Preprocessed/Dev/")
     parser.add_argument('--batch_size', default=40, type=int, help="Number of clips to send to GPU at once")
